@@ -1,0 +1,41 @@
+@keyframes dotPosition{
+   from {top: 140px;}
+   to {top:0px;}
+ }
+@keyframes dotBlur{
+   0% {opacity: 1; filter: blur(0px);}
+   50% {opacity: 0.8; filter: blur(0px);}
+   100% {opacity: 0; filter: blur(10px);}
+ }
+ @keyframes dotLength {
+   0%{ height: 10px;}
+   20%{ height: 40px;}
+   100%{ height: 0px;}
+ }
+ @keyframes centerBlow {
+   from {width:10px; height:10px; border-radius: 10px; border-width: 10px; opacity: 1; filter: blur(0px); transform: translate(0px,0px);}
+   to {width:80px; height:80px; border-radius: 40px; border-width: 30px; opacity: 0; filter: blur(20px); transform: translate(-35px,-35px);}
+ }
+ .mainframe{
+   position: absolute;
+ }
+ .frame{
+   width: 40px;
+   height: 150px;
+   position: absolute;
+   top: 10px;
+   left: 130px;
+   transform-origin: 20px 140px;
+ }
+ .dot{
+   position: absolute;
+   animation: dotPosition 1.2s ease-out forwards, dotBlur 1.2s linear forwards, dotLength 1.2s ease-in-out forwards;
+ }
+ .core{
+   position: absolute;
+   left:145px;
+   top:145px;
+   box-sizing: border-box;
+   border-style: solid;
+   animation: centerBlow 0.8s ease-out forwards;
+ }
