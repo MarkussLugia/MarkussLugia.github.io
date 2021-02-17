@@ -68,11 +68,7 @@
     this.red = Math.random() * 230 + 25;
     this.blue = Math.random() * 230 + 25;
     this.green = Math.random() * 230 + 25;
-    nodes.forEach(function(node){
-      if (node.tagName == "DIV") {
-        clean(node);
-      }
-    });
+    setTimeout("clean()", 0);
     let frame;
     let dot;
     let core = document.createElement("DIV");
@@ -99,10 +95,14 @@
       body.appendChild(frame);
     }
   }
-  function clean(node){
-    if (Date.now() - parseInt(node.getAttribute("birth")) > 1200) {
-      body.removeChild(node);
-    }
+  function clean(){
+    nodes.forEach(function(node){
+      if (node.tagName == "DIV") {
+        if (Date.now() - parseInt(node.getAttribute("birth")) > 1200) {
+          body.removeChild(node);
+        }
+      }
+    });
   }
   auto = setInterval(fireworkClassic, 250)
 </script>
