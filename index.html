@@ -75,7 +75,7 @@
     red = (red <= 255 && red >= 0) ?  red : Math.random() * 230 + 25;
     green = (green <= 255 && green >= 0) ?  green : Math.random() * 230 + 25;
     blue = (green <= 255 && green >= 0) ?  green : Math.random() * 230 + 25;
-    setTimeout("clean()", 0);
+    clean(view);
     mainframe = document.createElement("DIV");
     mainframe.setAttribute("birth", Date.now());
     mainframe.className = "mainframe";
