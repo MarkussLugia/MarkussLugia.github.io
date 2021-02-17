@@ -35,7 +35,7 @@
     }
     .dot{
       position: relative;
-      animation: dotPosition 1.5s ease-out forwards, dotBlur 1.5s linear forwards, dotLength 1.5s ease-in-out forwards;
+      animation: dotPosition 1.2s ease-out forwards, dotBlur 1.2s linear forwards, dotLength 1.2s ease-in-out forwards;
     }
     .core{
       position: fixed;
@@ -76,7 +76,7 @@
     let frame;
     let dot;
     let core = document.createElement("DIV");
-    core.setAttribute("birth", Date.now());
+    core.setAttribute("birth", Date.now() - 400);
     core.className = "core";
     core.style.borderColor = "rgb(" + (this.red + 30) + "," + (this.blue + 30) + "," + (this.green + 30) + ")";
     core.style.left = (this.x - 5) + "px";
@@ -100,7 +100,7 @@
     }
   }
   function clean(node){
-    if (Date.now() - parseInt(node.getAttribute("birth")) > 1500) {
+    if (Date.now() - parseInt(node.getAttribute("birth")) > 1200) {
       body.removeChild(node);
     }
   }
