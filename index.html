@@ -100,7 +100,7 @@
     }
   }
   function clean(node){
-    if (Date.now() - parseInt(node.getAttribute("birth")) > 2000) {
+    if (Date.now() - parseInt(node.getAttribute("birth")) > 1500) {
       body.removeChild(node);
     }
   }
