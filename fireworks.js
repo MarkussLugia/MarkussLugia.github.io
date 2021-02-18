@@ -1,4 +1,4 @@
-function fireworkClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, green, blue) {
+function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, green, blue) {
   let viewWidth = view.getBoundingClientRect().width;
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
@@ -13,22 +13,22 @@ function fireworkClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, g
   clean(view);
   mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + 1200);
-  mainframe.className = "fireworkClassicMainFrame";
+  mainframe.className = "fireworksClassicMainFrame";
   mainframe.style.left = (x - 150) + "px";
   mainframe.style.top = (y - 150) + "px";
   view.appendChild(mainframe);
   let frame;
   let dot;
   let core = document.createElement("DIV");
-  core.className = "fireworkClassicCore";
+  core.className = "fireworksClassicCore";
   core.style.borderColor = "rgb(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ")";
   mainframe.appendChild(core);
   for (let i = 0; i < sectionCount; i++) {
     frame = document.createElement("DIV");
-    frame.className = "fireworkClassicDotFrame";
+    frame.className = "fireworksClassicDotFrame";
     frame.style.transform = "rotate(" + (sectionAngle * i + offsetAngle) + "deg)";
     dot = document.createElement("DIV");
-    dot.className = "fireworkClassicDot";
+    dot.className = "fireworksClassicDot";
     dot.style.width = dotWidth + "px";
     dot.style.left = 20 - dotWidth / 2 + "px";
     dot.style.borderRadius = Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px";
@@ -41,7 +41,7 @@ function fireworkClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, g
 function clean(view){
   let nodes = view.childNodes;
   nodes.forEach(function(node){
-    if (node.className == "fireworkClassicMainFrame") {
+    if (node.className == "fireworksClassicMainFrame") {
       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
       }
