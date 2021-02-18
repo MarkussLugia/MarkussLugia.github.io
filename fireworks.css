@@ -1,25 +1,25 @@
-@keyframes dotPosition{
+@keyframes fireworkClassicDotPosition{
    from {top: 140px;}
    to {top:0px;}
  }
-@keyframes dotBlur{
+@keyframes fireworkClassicDotBlur{
    0% {opacity: 1; filter: blur(0px);}
    60% {opacity: 0.8; filter: blur(0px);}
    100% {opacity: 0; filter: blur(10px);}
  }
- @keyframes dotLength {
+ @keyframes fireworkClassicDotLength {
    0%{ height: 10px;}
    20%{ height: 40px;}
    100%{ height: 0px;}
  }
- @keyframes centerBlow {
+ @keyframes fireworkClassicCoreBlow {
    from {width:10px; height:10px; border-radius: 10px; border-width: 10px; opacity: 1; filter: blur(0px); transform: translate(0px,0px);}
    to {width:80px; height:80px; border-radius: 40px; border-width: 30px; opacity: 0; filter: blur(20px); transform: translate(-35px,-35px);}
  }
- .mainframe{
+ .fireworkClassicMainFrame{
    position: absolute;
  }
- .frame{
+ .fireworkClassicDotFrame{
    width: 40px;
    height: 150px;
    position: absolute;
@@ -27,15 +27,15 @@
    left: 130px;
    transform-origin: 20px 140px;
  }
- .dot{
+ .fireworkClassicDot{
    position: absolute;
-   animation: dotPosition 1.2s ease-out forwards, dotBlur 1.2s linear forwards, dotLength 1.2s ease-in-out forwards;
+   animation: fireworkClassicDotPosition 1.2s ease-out forwards, fireworkClassicDotBlur 1.2s linear forwards, fireworkClassicDotLength 1.2s ease-in-out forwards;
  }
- .core{
+ .fireworkClassicCore{
    position: absolute;
    left:145px;
    top:145px;
    box-sizing: border-box;
    border-style: solid;
-   animation: centerBlow 0.8s ease-out forwards;
+   animation: fireworkClassicCoreBlow 0.8s ease-out forwards;
  }

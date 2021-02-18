@@ -12,23 +12,23 @@ function fireworkClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, g
   blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
   clean(view);
   mainframe = document.createElement("DIV");
-  mainframe.setAttribute("birth", Date.now());
-  mainframe.className = "mainframe";
+  mainframe.setAttribute("expire", Date.now() + 1200);
+  mainframe.className = "fireworkClassicMainFrame";
   mainframe.style.left = (x - 150) + "px";
   mainframe.style.top = (y - 150) + "px";
   view.appendChild(mainframe);
   let frame;
   let dot;
   let core = document.createElement("DIV");
-  core.className = "core";
+  core.className = "fireworkClassicCore";
   core.style.borderColor = "rgb(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ")";
   mainframe.appendChild(core);
   for (let i = 0; i < sectionCount; i++) {
     frame = document.createElement("DIV");
-    frame.className = "frame";
+    frame.className = "fireworkClassicDotFrame";
     frame.style.transform = "rotate(" + (sectionAngle * i + offsetAngle) + "deg)";
     dot = document.createElement("DIV");
-    dot.className = "dot";
+    dot.className = "fireworkClassicDot";
     dot.style.width = dotWidth + "px";
     dot.style.left = 20 - dotWidth / 2 + "px";
     dot.style.borderRadius = Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px " + Math.random() * dotWidth + "px";
@@ -40,10 +40,9 @@ function fireworkClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, g
 
 function clean(view){
   let nodes = view.childNodes;
-  let node;
   nodes.forEach(function(node){
-    if (node.tagName == "DIV") {
-      if (Date.now() - parseInt(node.getAttribute("birth")) > 1200) {
+    if (node.className == "fireworkClassicMainFrame") {
+      if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
       }
     }
