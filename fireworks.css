@@ -4,7 +4,7 @@
  }
 @keyframes dotBlur{
    0% {opacity: 1; filter: blur(0px);}
-   50% {opacity: 0.8; filter: blur(0px);}
+   60% {opacity: 0.8; filter: blur(0px);}
    100% {opacity: 0; filter: blur(10px);}
  }
  @keyframes dotLength {
