@@ -13,11 +13,20 @@
    100%{ height: 0px;}
  }
  @keyframes fireworksClassicCoreBlow {
-   from {width:10px; height:10px; border-radius: 10px; border-width: 10px; opacity: 1; filter: blur(0px); transform: translate(0px,0px);}
-   to {width:80px; height:80px; border-radius: 40px; border-width: 30px; opacity: 0; filter: blur(20px); transform: translate(-35px,-35px);}
+   from {width:10px; height:10px; border-radius: 10px; border-width: 5px; opacity: 1; filter: blur(0px); transform: translate(0px,0px);}
+   to {width:80px; height:80px; border-radius: 40px; border-width: 25px; opacity: 0; filter: blur(20px); transform: translate(-35px,-35px);}
+ }
+ @keyframes fireworksClassicHaloBlow {
+   from {width:10px; height:10px; border-radius: 10px; border-width: 5px; opacity: 1; filter: blur(5px); transform: translate(0px,0px);}
+   to {width:250px; height:250px; border-radius: 250px; border-width: 35px; opacity: 0; filter: blur(30px); transform: translate(-120px,-120px);}
+ }
+ @keyframes fireworksClassicGravity {
+   from {transform: translateY(0px);}
+   to {transform: translateY(80px);}
  }
  .fireworksClassicMainFrame{
    position: absolute;
+   /*animation: fireworksClassicGravity 1s ease-in 0.2s forwards;*/  /*取消注释可以启用烟花下坠的效果*/
  }
  .fireworksClassicDotFrame{
    width: 40px;
@@ -37,5 +46,14 @@
    top:145px;
    box-sizing: border-box;
    border-style: solid;
-   animation: fireworksClassicCoreBlow 0.8s ease-out forwards;
+   background-color: white;
+   animation: fireworksClassicCoreBlow 0.6s ease-out forwards;
+ }
+ .fireworksClassicHalo{
+   position: absolute;
+   left:145px;
+   top:145px;
+   box-sizing: border-box;
+   border-style: solid;
+   animation: fireworksClassicHaloBlow 1s ease-out forwards;
  }

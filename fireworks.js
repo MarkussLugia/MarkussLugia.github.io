@@ -3,9 +3,9 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
   y  = (typeof y == 'number') ?  y : Math.random() * viewHeight;
-  sectionCount = Math.floor((sectionCount <= 14 && sectionCount >= 6) ?  sectionCount : Math.random() * 8 + 6);
+  sectionCount = Math.floor((sectionCount <= 20 && sectionCount >= 2) ?  sectionCount : Math.random() * 8 + 6);
   sectionAngle = 360 / sectionCount;
-  offsetAngle = (typeof offsetAngle == 'number') ?  offsetAngle : Math.random() * 360;
+  offsetAngle = (typeof offsetAngle == 'number') ?  offsetAngle % 360 : Math.random() * 360;
   dotWidth = (typeof dotWidth == 'number') ?  dotWidth : Math.random() * 20 + 5;
   red = (red <= 255 && red >= 0) ?  red : Math.random() * 200 + 55;
   green = (green <= 255 && green >= 0) ?  green : Math.random() * 200 + 55;
@@ -21,8 +21,12 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   let dot;
   let core = document.createElement("DIV");
   core.className = "fireworksClassicCore";
-  core.style.borderColor = "rgb(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ")";
+  core.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
   mainframe.appendChild(core);
+  let halo = document.createElement("DIV");
+  halo.className = "fireworksClassicHalo";
+  halo.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
+  mainframe.appendChild(halo);
   for (let i = 0; i < sectionCount; i++) {
     frame = document.createElement("DIV");
     frame.className = "fireworksClassicDotFrame";
