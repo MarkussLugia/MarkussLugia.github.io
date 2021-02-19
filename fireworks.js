@@ -23,7 +23,7 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   mainframe.appendChild(halo);
   halo.animate([
     {width: "10px", height: "10px", borderRadius: "10px", borderWidth: "0px", opacity: 1, filter: "blur(5px)", transform: "translate(0px,0px)", backgroundColor: "rgba(" + (red + 50) + "," + (green + 50) + "," + (blue + 50) + ",0.8)"},
-    {width: "270px", height: "270px", borderRadius: "270px", borderWidth: "35px", opacity: 0, filter: "blur(30px)", transform: "translate(-130px,-130px)", backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"}
+    {width: "270px", height: "270px", borderRadius: "135px", borderWidth: "35px", opacity: 0, filter: "blur(30px)", transform: "translate(-130px,-130px)", backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"}
   ],{
     duration: 1000,
     easing: "ease-out",
