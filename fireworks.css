@@ -1,10 +1,5 @@
-@keyframes fireworksClassicGravity {
-   from {transform: translateY(0px);}
-   to {transform: translateY(80px);}
- }
- .fireworksClassicMainFrame{
+.fireworksClassicMainFrame{
    position: absolute;
-   /*animation: fireworksClassicGravity 1s ease-in 0.2s forwards;*/  /*取消注释可以启用烟花下坠的效果*/
  }
  .fireworksClassicDot{
    position: absolute;

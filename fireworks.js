@@ -1,4 +1,5 @@
 function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, green, blue) {
+  clean(view);
   let viewWidth = view.getBoundingClientRect().width;
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
@@ -10,7 +11,6 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   red = (red <= 255 && red >= 0) ?  red : Math.random() * 200 + 55;
   green = (green <= 255 && green >= 0) ?  green : Math.random() * 200 + 55;
   blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
-  clean(view);
   mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + 1200);
   mainframe.className = "fireworksClassicMainFrame";
