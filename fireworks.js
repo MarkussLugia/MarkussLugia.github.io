@@ -13,7 +13,7 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
   mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + 1200);
-  mainframe.className = "fireworksClassicMainFrame";
+  mainframe.className = "fireworksClassicFrame";
   mainframe.style.left = (x - 150) + "px";
   mainframe.style.top = (y - 150) + "px";
   view.appendChild(mainframe);
@@ -83,7 +83,7 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
 function clean(view){
   let nodes = view.childNodes;
   nodes.forEach(function(node){
-    if (node.className == "fireworksClassicMainFrame") {
+    if (node.className == "fireworksClassicFrame") {
       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
       }
