@@ -13,12 +13,11 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
   mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + 1200);
-  mainframe.className = "fireworksClassicMainFrame";
+  mainframe.className = "fireworksClassicFrame";
   mainframe.style.left = (x - 150) + "px";
   mainframe.style.top = (y - 150) + "px";
   view.appendChild(mainframe);
   let core = document.createElement("DIV");
-  core.className = "fireworksClassicCore";
   core.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
   mainframe.appendChild(core);
   core.animate([
@@ -30,7 +29,6 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
     fill: "forwards"
   });
   let halo = document.createElement("DIV");
-  halo.className = "fireworksClassicHalo";
   halo.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
   mainframe.appendChild(halo);
   halo.animate([
@@ -44,7 +42,6 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   let dot;
   for (let i = 0; i < sectionCount; i++) {
     dot = document.createElement("DIV");
-    dot.className = "fireworksClassicDot";
     dot.style.width = dotWidth + "px";
     dot.style.left = 150 - dotWidth / 2 + "px";
     dot.style.transformOrigin = dotWidth / 2 + "px 0px";
@@ -83,7 +80,7 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
 function clean(view){
   let nodes = view.childNodes;
   nodes.forEach(function(node){
-    if (node.className == "fireworksClassicMainFrame") {
+    if (node.className == "fireworksClassicFrame") {
       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
       }
