@@ -17,25 +17,13 @@ function fireworksClassic(view, x, y, sectionCount, offsetAngle, dotWidth, red, 
   mainframe.style.left = (x - 150) + "px";
   mainframe.style.top = (y - 150) + "px";
   view.appendChild(mainframe);
-  let core = document.createElement("DIV");
-  core.className = "fireworksClassicCore";
-  core.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
-  mainframe.appendChild(core);
-  core.animate([
-    {width: "10px", height: "10px", borderRadius: "10px", borderWidth: "5px", opacity: 1, filter: "blur(0px)", transform: "translate(0px,0px)"},
-    {width: "80px", height: "80px", borderRadius: "80px", borderWidth: "25px", opacity: 0, filter: "blur(20px)", transform: "translate(-35px,-35px)"}
-  ],{
-    duration: 600,
-    easing: "ease-out",
-    fill: "forwards"
-  });
   let halo = document.createElement("DIV");
   halo.className = "fireworksClassicHalo";
   halo.style.borderColor = "rgb(" + red + "," + green + "," + blue + ")";
   mainframe.appendChild(halo);
   halo.animate([
-    {width: "10px", height: "10px", borderRadius: "10px", borderWidth: "5px", opacity: 1, filter: "blur(5px)", transform: "translate(0px,0px)"},
-    {width: "250px", height: "250px", borderRadius: "250px", borderWidth: "35px", opacity: 0, filter: "blur(30px)", transform: "translate(-120px,-120px)"}
+    {width: "10px", height: "10px", borderRadius: "10px", borderWidth: "0px", opacity: 1, filter: "blur(5px)", transform: "translate(0px,0px)", backgroundColor: "rgba(" + (red + 50) + "," + (green + 50) + "," + (blue + 50) + ",0.8)"},
+    {width: "270px", height: "270px", borderRadius: "270px", borderWidth: "35px", opacity: 0, filter: "blur(30px)", transform: "translate(-130px,-130px)", backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"}
   ],{
     duration: 1000,
     easing: "ease-out",
