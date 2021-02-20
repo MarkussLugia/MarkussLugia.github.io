@@ -73,28 +73,30 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
         opacity: 1,
         filter: "blur(0px)",
         height: 0.07 * radius + "px",
-        borderBottomWidth: 0.05 * radius + "px",
+        borderBottomWidth: 0.2 * radius + "px",
         borderBottomColor: "rgba(255,255,255,1)"
       },
       {
         height: 0.2 * radius + "px",
         borderBottomWidth: 0.15 * radius + "px",
+        borderBottomColor: "rgba(255,255,255,1)",
         offset: 0.2
       },
       {
-        opacity: 0.8,
+        opacity: 0.9,
         filter: "blur(0px)",
         borderBottomWidth: 0.05 * radius + "px",
         offset:0.6
       },
       {
-        borderBottomColor: "rgba(" + red + "," + green + "," + blue + ",0.7)",
+        opacity: 0.7,
+        borderBottomColor: "rgba(" + red + "," + green + "," + blue + ",0.5)",
         offset:0.8
       },
       {
         transform: "rotate(" + (avAngle * i + offsetAngle) + "deg) translateY(" + radius + "px)",
         opacity: 0,
-        filter: "blur(" + 0.07 * radius + "px)",
+        filter: "blur(" + 0.08 * radius + "px)",
         height: "0px",
         borderBottomWidth: "0px",
         borderBottomColor: "rgba(" + red + "," + green + "," + blue + ",0)"
