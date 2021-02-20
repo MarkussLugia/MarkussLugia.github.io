@@ -3,22 +3,12 @@
  }
  .fireworksClassicDot{
    position: absolute;
-   top:150px;
+   box-sizing: border-box;
    border-bottom-color: rgba(255,255,255,0.8);
    border-bottom-style: solid;
  }
- .fireworksClassicCore{
-   position: absolute;
-   left:145px;
-   top:145px;
-   box-sizing: border-box;
-   border-style: solid;
-   background-color: white;
- }
  .fireworksClassicHalo{
    position: absolute;
-   left:145px;
-   top:145px;
    box-sizing: border-box;
    border-style: solid;
  }
