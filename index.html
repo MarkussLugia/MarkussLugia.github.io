@@ -15,7 +15,6 @@
     position: absolute;
     top: calc(50vh - 15vw);
     left:20vw;
-    opacity: 0.9;
   }
   #view {
      background-image: linear-gradient(to bottom, #000000, #000840);
@@ -30,17 +29,46 @@
 </head>
 <body id="body">
   <div id="view"></div>
-  <img src="Zelda_35th_Logo.svg" alt="Nintendo Direct">
+  <img id="logo" style="opacity: 0.2" src="Zelda_35th_Logo.svg" alt="Nintendo Direct">
 </body>
 <script src="fireworks.js" type="text/javascript"></script>
 <script type="text/javascript">
   let view = document.getElementById("view");
-  auto = setInterval(function(){
+  let logo = document.getElementById("logo");
+  function autoFireworks(){
     let radius = Math.random() * 175 + 75;
     let bokeh = (200 - radius) / 30;
     bokeh *= bokeh;
     let firework = fireworksClassic(view, null, null, radius, null, null, null, null, null, null, null);
     firework.style.filter = "blur(" + bokeh + "px)";
-    firework.style.opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
-  }, 250);
+    let opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
+    firework.style.opacity = opacity;
+    overlay = logo.cloneNode(true);
+    overlay.setAttribute("expire", Date.now() + 800);
+    overlay.className = "overlay";
+    document.body.appendChild(overlay);
+    overlay.animate([
+      {opacity: 0},
+      {opacity: opacity * 0.5, offset: 0.04},
+      {opacity: 0}
+    ],{
+      duration: 800,
+      easing: "ease-in",
+      fill: "forwards"
+    });
+    setTimeout("autoFireworks()",Math.random() * 500 + 400);
+    setTimeout(function() {cleanOverlay()}, 800);
+  }
+
+  function cleanOverlay(){
+    for (var node of document.body.childNodes) {
+      if (node.className == "overlay") {
+        if (Date.now() >= parseInt(node.getAttribute("expire"))) {
+          document.body.removeChild(node);
+          return;
+        }
+      }
+    }
+  }
+  autoFireworks();
 </script>
