@@ -1,10 +1,10 @@
 function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidth, red, green, blue) {
-  clean(view);
   let viewWidth = view.getBoundingClientRect().width;
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
   y  = (typeof y == 'number') ?  y : Math.random() * viewHeight;
   radius  = (typeof radius == 'number') ?  radius : Math.random() * 250 + 25;
+  duration  = (typeof duration == 'number') ?  duration : 1200;
   sectionCount = Math.floor((sectionCount <= 20 && sectionCount >= 2) ?  sectionCount : Math.random() * 8 + 6);
   sectionAngle = 360 / sectionCount;
   offsetAngle = (typeof offsetAngle == 'number') ?  offsetAngle % 360 : Math.random() * 360;
@@ -28,7 +28,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
     {width: 0.08 * radius + "px", height: 0.08 * radius + "px", borderRadius: 0.04 * radius + "px", borderWidth: "0px", opacity: 1, filter: "blur(0px)", left: 0.96 * radius + "px", top: 0.96 * radius + "px", backgroundColor: "rgba(" + (red + 50) + "," + (green + 50) + "," + (blue + 50) + ",0.8)"},
     {width: 1.8 * radius + "px", height: 1.8 * radius + "px", borderRadius: 0.9 * radius + "px", borderWidth: 0.24 * radius + "px", opacity: 0, filter: "blur(" + 0.2 * radius + "px)", left: 0.1 * radius + "px", top: 0.1 * radius + "px", backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"}
   ],{
-    duration: 1000,
+    duration: duration * 0.85,
     easing: "ease-out",
     fill: "forwards"
   });
@@ -47,7 +47,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
       {transform: "rotate(" + (sectionAngle * i + offsetAngle) + "deg) translateY(-" + 0.07 * radius + "px)"},
       {transform: "rotate(" + (sectionAngle * i + offsetAngle) + "deg) translateY(" + radius + "px)"}
     ],{
-      duration: 1200,
+      duration: duration,
       easing: "ease-out",
       fill: "forwards"
     });
@@ -56,7 +56,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
       {opacity: 0.8, filter: "blur(0px)", offset:0.6},
       {opacity: 0, filter: "blur(" + 0.07 * radius + "px)"}
     ],{
-      duration: 1200,
+      duration: duration,
       easing: "ease-out",
       fill: "forwards"
     });
@@ -65,10 +65,13 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
       {height: 0.2 * radius + "px", borderBottomWidth: 0.08 * radius + "px", offset: 0.2},
       {height: "0px", borderBottomWidth: "0px"}
     ],{
-      duration: 1200,
+      duration: duration,
       easing: "ease-out",
       fill: "forwards"
     });
+    setTimeout(function() {
+      clean(view);
+    }, duration)
   }
 }
 
