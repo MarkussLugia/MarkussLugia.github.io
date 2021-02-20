@@ -44,7 +44,7 @@
     let opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
     firework.style.opacity = opacity;
     overlay = logo.cloneNode(true);
-    overlay.setAttribute("expire", Date.now() + 800);
+    overlay.setAttribute("expire", Date.now() + 1000);
     overlay.className = "overlay";
     document.body.appendChild(overlay);
     overlay.animate([
@@ -52,12 +52,12 @@
       {opacity: opacity * 0.56 - 0.08, offset: 0.05},
       {opacity: 0}
     ],{
-      duration: 800,
+      duration: 1000,
       easing: "ease-in",
       fill: "forwards"
     });
     setTimeout("autoFireworks()",Math.random() * 500 + 400);
-    setTimeout(function() {cleanOverlay()}, 800);
+    setTimeout(function() {cleanOverlay()}, 1000);
   }
 
   function cleanOverlay(){
