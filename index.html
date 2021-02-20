@@ -49,14 +49,14 @@
     document.body.appendChild(overlay);
     overlay.animate([
       {opacity: 0},
-      {opacity: opacity * 0.56 - 0.08, offset: 0.05},
+      {opacity: opacity * 0.56 - 0.08, offset: 0.04},
       {opacity: 0}
     ],{
       duration: 1000,
       easing: "ease-in-out",
       fill: "forwards"
     });
-    setTimeout("autoFireworks()",Math.random() * 500 + 400);
+    setTimeout("autoFireworks()",Math.random() * 400 + 300);
     setTimeout(function() {cleanOverlay()}, 1000);
   }
 
