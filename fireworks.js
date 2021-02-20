@@ -1,17 +1,17 @@
-function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidth, red, green, blue) {
+function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, dotWidth, red, green, blue) {
   let viewWidth = view.getBoundingClientRect().width;
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
   y  = (typeof y == 'number') ?  y : Math.random() * viewHeight;
   radius  = (typeof radius == 'number') ?  radius : Math.random() * 250 + 25;
   duration  = (typeof duration == 'number') ?  duration : 1200;
-  sectionCount = Math.floor((sectionCount <= 20 && sectionCount >= 2) ?  sectionCount : Math.random() * 8 + 6);
-  sectionAngle = 360 / sectionCount;
+  dotCount = Math.floor((dotCount <= 20 && dotCount >= 2) ?  dotCount : Math.random() * 8 + 6);
+  avAngle = 360 / dotCount;
   offsetAngle = (typeof offsetAngle == 'number') ?  offsetAngle % 360 : Math.random() * 360;
   dotWidth = (typeof dotWidth == 'number') ?  dotWidth : (Math.random() * 0.15 + 0.03) * radius;
-  red = (red <= 255 && red >= 0) ?  red : Math.random() * 200 + 55;
-  green = (green <= 255 && green >= 0) ?  green : Math.random() * 200 + 55;
-  blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
+  red = (typeof red == 'number') ?  red : Math.random() * 200 + 55;
+  green = (typeof green == 'number') ?  green : Math.random() * 200 + 55;
+  blue = (typeof blue == 'number') ?  blue : Math.random() * 200 + 55;
   mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + duration);
   mainframe.className = "fireworksClassicFrame";
@@ -34,7 +34,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
     fill: "forwards"
   });
   let dot;
-  for (let i = 0; i < sectionCount; i++) {
+  for (let i = 0; i < dotCount; i++) {
     dot = document.createElement("DIV");
     dot.className = "fireworksClassicDot";
     dot.style.width = dotWidth + "px";
@@ -46,7 +46,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
     mainframe.appendChild(dot);
     dot.animate([
       {
-        transform: "rotate(" + (sectionAngle * i + offsetAngle) + "deg) translateY(-" + 0.07 * radius + "px)",
+        transform: "rotate(" + (avAngle * i + offsetAngle) + "deg) translateY(-" + 0.07 * radius + "px)",
         opacity: 1,
         filter: "blur(0px)",
         height: 0.07 * radius + "px",
@@ -63,7 +63,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
         offset:0.6
       },
       {
-        transform: "rotate(" + (sectionAngle * i + offsetAngle) + "deg) translateY(" + radius + "px)",
+        transform: "rotate(" + (avAngle * i + offsetAngle) + "deg) translateY(" + radius + "px)",
         opacity: 0,
         filter: "blur(" + 0.07 * radius + "px)",
         height: "0px",
@@ -80,12 +80,12 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
 }
 
 function clean(view){
-  let nodes = view.childNodes;
-  nodes.forEach(function(node){
+  for (var node of view.childNodes) {
     if (node.className == "fireworksClassicFrame") {
       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
+        return;
       }
     }
-  });
+  }
 }
