@@ -13,7 +13,7 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
   green = (green <= 255 && green >= 0) ?  green : Math.random() * 200 + 55;
   blue = (blue <= 255 && blue >= 0) ?  blue : Math.random() * 200 + 55;
   mainframe = document.createElement("DIV");
-  mainframe.setAttribute("expire", Date.now() + 1200);
+  mainframe.setAttribute("expire", Date.now() + duration);
   mainframe.className = "fireworksClassicFrame";
   mainframe.style.left = (x - radius) + "px";
   mainframe.style.top = (y - radius) + "px";
