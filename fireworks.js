@@ -3,7 +3,7 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
   let viewHeight = view.getBoundingClientRect().height;
   x  = (typeof x == 'number') ?  x : Math.random() * viewWidth;
   y  = (typeof y == 'number') ?  y : Math.random() * viewHeight;
-  radius  = (typeof radius == 'number') ?  radius : Math.random() * 250 + 25;
+  radius  = (typeof radius == 'number') ?  radius : Math.random() * 100 + 100;
   duration  = (typeof duration == 'number') ?  duration : 1200;
   dotCount = Math.floor((dotCount <= 20 && dotCount >= 2) ?  dotCount : Math.random() * 8 + 6);
   avAngle = 360 / dotCount;
@@ -25,13 +25,36 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
   halo.style.top = 0.96 * radius + "px";
   mainframe.appendChild(halo);
   halo.animate([
-    {width: 0.08 * radius + "px", height: 0.08 * radius + "px", borderRadius: 0.04 * radius + "px", borderWidth: "0px", opacity: 1, filter: "blur(0px)", left: 0.96 * radius + "px", top: 0.96 * radius + "px", backgroundColor: "rgba(" + (red + 50) + "," + (green + 50) + "," + (blue + 50) + ",1)"},
-    {backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0.2)", offset: 0.4},
-    {width: 1.8 * radius + "px", height: 1.8 * radius + "px", borderRadius: 0.9 * radius + "px", borderWidth: 0.24 * radius + "px", opacity: 0, filter: "blur(" + 0.2 * radius + "px)", left: 0.1 * radius + "px", top: 0.1 * radius + "px", backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"}
+    {
+      width: 0.08 * radius + "px",
+      height: 0.08 * radius + "px",
+      borderRadius: 0.04 * radius + "px",
+      borderWidth: "0px",
+      opacity: 1,
+      filter: "blur(0px)",
+      left: 0.96 * radius + "px",
+      top: 0.96 * radius + "px",
+      backgroundColor: "rgba(" + (red + 50) + "," + (green + 50) + "," + (blue + 50) + ",1)"
+    },
+    {
+      backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0.2)",
+      offset: 0.4
+    },
+    {
+      width: 1.8 * radius + "px",
+      height: 1.8 * radius + "px",
+      borderRadius: 0.9 * radius + "px",
+      borderWidth: 0.24 * radius + "px",
+      opacity: 0,
+      filter: "blur(" + 0.2 * radius + "px)",
+      left: 0.1 * radius + "px",
+      top: 0.1 * radius + "px",
+      backgroundColor: "rgba(" + red + "," + green + "," + blue + ",0)"
+    }
   ],{
-    duration: duration * 0.85,
-    easing: "ease-out",
-    fill: "forwards"
+      duration: duration * 0.85,
+      easing: "ease-out",
+      fill: "forwards"
   });
   let dot;
   for (let i = 0; i < dotCount; i++) {
@@ -50,24 +73,31 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
         opacity: 1,
         filter: "blur(0px)",
         height: 0.07 * radius + "px",
-        borderBottomWidth: 0.07 * radius + "px"
+        borderBottomWidth: 0.05 * radius + "px",
+        borderBottomColor: "rgba(255,255,255,1)"
       },
       {
         height: 0.2 * radius + "px",
-        borderBottomWidth: 0.08 * radius + "px",
+        borderBottomWidth: 0.15 * radius + "px",
         offset: 0.2
       },
       {
         opacity: 0.8,
         filter: "blur(0px)",
+        borderBottomWidth: 0.05 * radius + "px",
         offset:0.6
+      },
+      {
+        borderBottomColor: "rgba(" + red + "," + green + "," + blue + ",0.7)",
+        offset:0.8
       },
       {
         transform: "rotate(" + (avAngle * i + offsetAngle) + "deg) translateY(" + radius + "px)",
         opacity: 0,
         filter: "blur(" + 0.07 * radius + "px)",
         height: "0px",
-        borderBottomWidth: "0px"
+        borderBottomWidth: "0px",
+        borderBottomColor: "rgba(" + red + "," + green + "," + blue + ",0)"
       }
     ],{
         duration: duration,
