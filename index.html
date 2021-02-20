@@ -26,5 +26,12 @@
 <script src="fireworks.js" type="text/javascript"></script>
 <script type="text/javascript">
   let view = document.getElementById("view");
-  auto = setInterval(function(){fireworksClassic(view);}, 400);
+  auto = setInterval(function(){
+    let radius = Math.random() * 175 + 75;
+    let bokeh = (200 - radius) / 30;
+    bokeh *= bokeh;
+    let firework = fireworksClassic(view, null, null, radius, null, null, null, null, null, null, null);
+    firework.style.filter = "blur(" + bokeh + "px)";
+    firework.style.opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
+  }, 250);
 </script>
