@@ -74,8 +74,9 @@ function fireworksClassic(view, x, y, radius, sectionCount, offsetAngle, dotWidt
         easing: "ease-out",
         fill: "forwards"
     });
-    setTimeout(function() {clean(view)}, duration);
   }
+  setTimeout(function() {clean(view)}, duration);
+  return mainframe;
 }
 
 function clean(view){
