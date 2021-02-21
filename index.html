@@ -10,11 +10,15 @@
     background-attachment: fixed;
   }
   .overlay{
-    width:20vw;
-    height:20vw;
-    border-radius: 10vw;
+    width:24vw;
+    height:24vw;
+    border-radius: 12vw;
     position: absolute;
-    filter: blur(25vw);
+    background-color: rgb(255,255,255);
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 8vw;
+    filter: blur(27vw);
   }
   #logo{
     width:60vw;
@@ -64,9 +68,9 @@
     firework.style.opacity = opacity;
     overlay = document.createElement("DIV");
     overlay.className = "overlay";
-    overlay.style.backgroundColor = "rgba(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ",1)";
-    overlay.style.left = (parseInt(firework.style.left.slice(0,-2)) + radius)*0.8 - window.innerWidth * 0.2 + "px";
-    overlay.style.top = (parseInt(firework.style.top.slice(0,-2)) + radius)*0.5 - window.innerHeight*0.1 - window.innerWidth * 0.1 + "px";
+    overlay.style.borderColor = "rgb(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ")";
+    overlay.style.left = (parseInt(firework.style.left.slice(0,-2)) + radius)*0.8 - window.innerWidth * 0.22 + "px";
+    overlay.style.top = ((parseInt(firework.style.top.slice(0,-2)) + radius)/window.innerHeight - 0.44)*window.innerWidth*0.5 + "px";
     overlay.setAttribute("expire", Date.now() + 800);
     logo.appendChild(overlay);
     overlay.animate([
