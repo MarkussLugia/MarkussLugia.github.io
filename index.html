@@ -66,7 +66,7 @@
     overlay.className = "overlay";
     overlay.style.backgroundColor = "rgba(" + (red + 30) + "," + (green + 30) + "," + (blue + 30) + ",1)";
     overlay.style.left = (parseInt(firework.style.left.slice(0,-2)) + radius)*0.8 - window.innerWidth * 0.2 + "px";
-    overlay.style.top = ((parseInt(firework.style.top.slice(0,-2)) + radius)/window.innerHeight)*window.innerHeight*0.5 - window.innerHeight*0.1 + "px";
+    overlay.style.top = (parseInt(firework.style.top.slice(0,-2)) + radius)*0.5 - window.innerHeight*0.1 - window.innerWidth * 0.1 + "px";
     overlay.setAttribute("expire", Date.now() + 800);
     logo.appendChild(overlay);
     overlay.animate([
