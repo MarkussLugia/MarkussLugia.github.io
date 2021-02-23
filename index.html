@@ -7,21 +7,16 @@
       grid-area: 1 / 3 / 3 / 4;
     }
     #mynintendo{
-      display: block;
-      width:auto;
-      height:100%;
-      margin:auto;
+      background-image: url(MyNintendo.png);
+      background-color: #F02028;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
     @media screen and (max-aspect-ratio: 1/1) {
       #firework{
         background-image: linear-gradient(to bottom, #000000, #000840);
         grid-area: 1 / 3 / 2 / 5;
-      }
-      #mynintendo{
-        position: absolute;
-        top: calc(50% - 9vw);
-        width:100%;
-        height:auto;
       }
     }
   </style>
@@ -38,7 +33,8 @@
     <div class="grid empty"></div>
     <div class="grid empty"></div>
     <div class="grid empty"></div>
-    <div class="grid" style="background-color: #F02028" onClick="window.open('https://my.nintendo.com/','_self')"><img id="mynintendo" src="MyNintendo.png"></div>
+    <div id="mynintendo" class="grid" onClick="window.open('https://my.nintendo.com/','_self')">
+    </div>
     <div class="grid empty"></div>
     <div class="grid empty"></div>
     <div class="grid empty"></div>
