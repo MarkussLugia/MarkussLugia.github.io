@@ -23,6 +23,9 @@
   margin: 0;
   transition: 0.3s;
 }
+.animation{
+  position: absolute;
+}
 @media screen and (min-aspect-ratio: 16/9) {
   .wrapper{
     left: calc(50vw - (640vh / 9));
