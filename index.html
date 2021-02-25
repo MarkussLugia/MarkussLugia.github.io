@@ -34,12 +34,12 @@
     <div class="grid empty"></div>
     <div class="grid empty"></div>
     <div id="myNintendo" class="grid" onClick="window.open('https://my.nintendo.com/','_self')">
-      <div id="myNintendoRedBg" class="animation" style="background-color:#E60012; opacity:0; width:100%; height:100%"></div>
-      <img id="myNintendoRollingPoint" class="animation" src="res/myNintendoPlatiumPointFlat.png" style="display: block; height:50%; bottom: 1vh; left: -20vh">
-      <img id="myNintendoFallingPointSlow" class="animation" src="res/myNintendoFallingPointSlow.png" style="display: block; max-height: 420%; min-width: 100%; max-width: 200%; top: -100vh">
-      <img id="myNintendoFallingPointFast" class="animation" src="res/myNintendoFallingPointFast.png" style="display: block; max-height: 540%; min-width: 100%; max-width: 210%; top: -100vh">
-      <img id="myNintendoMiiBack" class="animation" src="res/myNintendoMiiBack.png" style="display: block; max-height:70%;min-width: 100%; max-width: 150%; bottom: -20vh">
-      <img id="myNintendoMiiFront" class="animation" src="res/myNintendoMiiFront.png" style="display: block; max-height:70%; min-width: 100%; max-width: 150%; bottom: -20vh">
+      <div id="myNintendoRedBg" class="gridAnimation" style="background-color:#E60012; opacity:0; width:100%; height:100%"></div>
+      <img id="myNintendoRollingPoint" class="gridAnimation" src="res/myNintendoPlatiumPointFlat.png" style="display: block; height:50%; bottom: 1vh; left: -20vh">
+      <img id="myNintendoFallingPointSlow" class="gridAnimation" src="res/myNintendoFallingPointSlow.png" style="display: block; max-height: 420%; min-width: 100%; max-width: 200%; top: -100vh">
+      <img id="myNintendoFallingPointFast" class="gridAnimation" src="res/myNintendoFallingPointFast.png" style="display: block; max-height: 540%; min-width: 100%; max-width: 210%; top: -100vh">
+      <img id="myNintendoMiiBack" class="gridAnimation" src="res/myNintendoMiiBack.png" style="display: block; max-height:70%;min-width: 100%; max-width: 150%; bottom: -20vh">
+      <img id="myNintendoMiiFront" class="gridAnimation" src="res/myNintendoMiiFront.png" style="display: block; max-height:70%; min-width: 100%; max-width: 150%; bottom: -20vh">
     </div>
     <div class="grid empty"></div>
     <div class="grid empty"></div>
@@ -51,19 +51,25 @@
 </body>
 <script src="fireworks/fireworks.js" type="text/javascript"></script>
 <script src="res/myNintendoAnimation.js" type="text/javascript"></script>
+<script src="res/backgroundAnimation.js" type="text/javascript"></script>
 <script type="text/javascript">
 
   let view = document.getElementById("firework");
   function autoFireworks(){
     let radius = (Math.random() + 2) * ((window.innerHeight < window.innerWidth) ? window.innerHeight : window.innerWidth) * 0.06;
-    firework = fireworksClassic(view, null, null, radius, null, null, null, null, null, null, null);
-    setTimeout("autoFireworks()",Math.random() * 150 + 720);
+    fireworksClassic(view, null, null, radius);
+    setTimeout("autoFireworks()",Math.random() * 240 + 720);
   }
-  function autoAnimation(){
-    Array.from(document.getElementById("myNintendo").getAnimations({subtree: true})).forEach(function(node){node.play();});
-    setTimeout("autoAnimation()",16000);
+  function autoBackgroundAnimation(){
+    backgroundWave(document.body, null, Math.random() * window.innerHeight, window.innerHeight);
+    setTimeout("autoBackgroundAnimation()",Math.random() * 500 +4500);
   }
-  myNintendoAnimation()
-  autoAnimation();
+  function autoGridAnimation(){
+    Array.from(document.getElementsByClassName("gridAnimation")).forEach(function(grid){Array.from(grid.getAnimations()).forEach(function(node){node.play();});});
+    setTimeout("autoGridAnimation()",16000);
+  }
+  myNintendoAnimation();
+  autoGridAnimation();
+  autoBackgroundAnimation();
   autoFireworks();
 </script>

@@ -12,7 +12,7 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
   red = (typeof red == 'number') ?  red : Math.random() * 200 + 55;
   green = (typeof green == 'number') ?  green : Math.random() * 200 + 55;
   blue = (typeof blue == 'number') ?  blue : Math.random() * 200 + 55;
-  mainframe = document.createElement("DIV");
+  let mainframe = document.createElement("DIV");
   mainframe.setAttribute("expire", Date.now() + duration);
   mainframe.className = "fireworksClassicFrame";
   mainframe.style.left = (x - radius) + "px";
@@ -107,13 +107,13 @@ function fireworksClassic(view, x, y, radius, duration, offsetAngle, dotCount, d
         fill: "forwards"
     });
   }
-  setTimeout(function() {clean(view)}, duration);
+  setTimeout(function() {clean(view, "fireworksClassicFrame")}, duration);
   return mainframe;
 }
 
-function clean(view){
+function clean(view, className){
   for (var node of view.childNodes) {
-    if (node.className == "fireworksClassicFrame") {
+    if (node.className == className) {
       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
         view.removeChild(node);
         return;
