@@ -1,4 +1,11 @@
 body{
+  padding: 0px;
+  margin: 0px;
+}
+#background{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 .wrapper{
@@ -9,6 +16,7 @@ body{
   position: absolute;
   left: 10vw;
   top: 10vh;
+  z-index: 114514;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);

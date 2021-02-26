@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="grid.css">
 </head>
 <body>
+  <div id="background"></div>
   <div class="wrapper">
     <div id="firework" class="grid" onClick="window.open('fireworks/fireworks.html','_self')"></div>
     <div class="grid empty"></div>
@@ -61,7 +62,7 @@
     setTimeout("autoFireworks()",Math.random() * 240 + 720);
   }
   function autoBackgroundAnimation(){
-    backgroundWave(document.body, null, Math.random() * window.innerHeight, window.innerHeight);
+    backgroundWave(document.getElementById("background"));
     setTimeout("autoBackgroundAnimation()",Math.random() * 500 +4500);
   }
   function autoGridAnimation(){
