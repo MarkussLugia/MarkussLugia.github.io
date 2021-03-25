@@ -40,7 +40,7 @@
     max-height: 80vh;
     border-style: solid none;
     border-color: white;
-    border-width: 0.5vh;
+    border-width: 0.45vh;
 }
 
 #fullScreenNotificationTextBox P{
@@ -58,6 +58,6 @@
         margin: 10px;
     }
     #fullScreenNotificationTextBox{
-        border-width: 0.5vw;
+        border-width: 0.45vw;
     }
 }
