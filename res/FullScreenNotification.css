@@ -48,3 +48,12 @@
     font-size: 5vh;
     margin: 10px;
 }
+
+@media screen and (max-aspect-ratio: 1/1) {
+    #fullScreenNotificationTextBox P{
+        color: white;
+        line-height: 8vw;
+        font-size: 5vw;
+        margin: 10px;
+    }
+}
