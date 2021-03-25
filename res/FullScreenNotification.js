@@ -92,11 +92,11 @@ function fullScreenNotificationClose() {
       opacity: "0"
     }
   ],{
-      duration: 500,
-      easing: "linear",
+      duration: 250,
+      easing: "ease-in",
       fill: "forwards",
   });
-  setTimeout(function(){document.body.removeChild(document.getElementById("fullScreenNotificationBackground"));},500);
+  setTimeout(function(){document.body.removeChild(document.getElementById("fullScreenNotificationBackground"));},300);
 }
 // function clean(view, className){
 //   for (var node of view.childNodes) {
