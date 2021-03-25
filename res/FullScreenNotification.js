@@ -24,10 +24,12 @@ function fullScreenNotification(textContent,expiration) {
   background.appendChild(notify);
   background.animate([
     {
-      opacity: "0"
+      opacity: "0",
+      backdropFilter: "blur(0px)"
     },
     {
-      opacity: "1"
+      opacity: "1",
+      backdropFilter: "blur(20px)"
     }
   ],{
       duration: 500,
@@ -86,10 +88,12 @@ function fullScreenNotificationClose() {
   let background = document.getElementById("fullScreenNotificationBackground");
   background.animate([
     {
-      opacity: "1"
+      opacity: "1",
+      backdropFilter: "blur(20px)"
     },
     {
-      opacity: "0"
+      opacity: "0",
+      backdropFilter: "blur(0px)"
     }
   ],{
       duration: 250,
