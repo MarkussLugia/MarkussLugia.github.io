@@ -61,7 +61,7 @@
         border-width: 0.45vw;
     }
     #fullScreenNotificationNotify{
-        right: 3vw;
-        font-size: 3vw;
+        right: calc(1vw + 2vh);
+        font-size: calc(1vw + 2vh);
     }
 }
