@@ -18,7 +18,7 @@ function fullScreenNotification(textContent,expiration) {
   textContent = textContent.toString().replace("<br>", "\n").replace("<", "&lt;").replace("\n", "<br>");
   text.innerHTML = textContent.replace("\n", "<br>");
   textBox.appendChild(text);
-  let notify = document.createElement("P");
+  let notify = document.createElement("B");
   notify.id = "fullScreenNotificationNotify";
   notify.innerHTML = "单击以关闭";
   background.appendChild(notify);
@@ -41,7 +41,7 @@ function fullScreenNotification(textContent,expiration) {
     },
     {
       opacity: "1",
-      padding: "3vh 0px"
+      padding: "30px 0px"
     }
   ],{
       duration: 500,

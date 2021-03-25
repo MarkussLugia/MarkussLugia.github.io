@@ -17,6 +17,7 @@
     position: absolute;
     bottom: 0px;
     right: 3vh;
+    bottom: 3vh;
     opacity: 0;
     color: white;
     font-size: 3vh;
@@ -38,6 +39,7 @@
     width: 80vw;
     height: auto;
     max-height: 80vh;
+    justify-content: left;
     border-style: solid none;
     border-color: white;
     border-width: 0.45vh;
@@ -47,21 +49,20 @@
     color: white;
     line-height: 8vh;
     font-size: 5vh;
-    margin: 10px;
+    margin: 10px 5vw;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
     #fullScreenNotificationTextBox P{
-        color: white;
         line-height: 8vw;
         font-size: 5vw;
-        margin: 10px;
     }
     #fullScreenNotificationTextBox{
         border-width: 0.45vw;
     }
     #fullScreenNotificationNotify{
         right: calc(1vw + 2vh);
+        bottom: calc(1vw + 2vh);
         font-size: calc(1vw + 2vh);
     }
 }
