@@ -36,7 +36,7 @@
 
 #fullScreenNotificationTextBox{
     opacity: 0;
-    width: 85vw;
+    width: 75vw;
     height: auto;
     max-height: 80vh;
     color: white;
@@ -50,7 +50,6 @@
 #fullScreenNotificationTextBox H1{
     line-height: 8vh;
     font-size: 5vh;
-    margin-left: 5vw;
     margin-top: 0;
     margin-bottom: 1vh;
 }
@@ -58,9 +57,7 @@
 #fullScreenNotificationTextBox P{
     line-height: 3vh;
     font-size: 2vh;
-    margin-left: 5vw;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {

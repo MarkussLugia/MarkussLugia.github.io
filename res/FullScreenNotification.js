@@ -43,11 +43,11 @@ function fullScreenNotification(titleContent,textContent,expiration) {
   textBox.animate([
     {
       opacity: "0",
-      padding: "0 0"
+      padding: "0 5vw"
     },
     {
       opacity: "1",
-      padding: "4vh 0px"
+      padding: "3vh 5vw"
     }
   ],{
       duration: 500,
