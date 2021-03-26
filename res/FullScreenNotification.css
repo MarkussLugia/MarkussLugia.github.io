@@ -39,23 +39,39 @@
     width: 85vw;
     height: auto;
     max-height: 80vh;
-    justify-content: left;
+    color: white;
+    flex-direction: column;
+    align-items: flex-start;
     border-style: solid none;
     border-color: white;
     border-width: 0.45vh;
 }
 
-#fullScreenNotificationTextBox P{
-    color: white;
+#fullScreenNotificationTextBox H1{
     line-height: 8vh;
     font-size: 5vh;
-    margin: 10px 5vw;
+    margin-left: 5vw;
+    margin-top: 0;
+    margin-bottom: 1vh;
+}
+
+#fullScreenNotificationTextBox P{
+    line-height: 3vh;
+    font-size: 2vh;
+    margin-left: 5vw;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    #fullScreenNotificationTextBox P{
+    #fullScreenNotificationTextBox H1{
         line-height: 8vw;
         font-size: 5vw;
+        margin-bottom: 1vw;
+    }
+    #fullScreenNotificationTextBox P{
+        line-height: 3vw;
+        font-size: calc(1.5vw + 0.5vh);
     }
     #fullScreenNotificationTextBox{
         border-width: 0.45vw;

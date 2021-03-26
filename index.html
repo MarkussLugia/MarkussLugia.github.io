@@ -58,7 +58,7 @@
 <script type="text/javascript">
   Array.from(document.getElementsByClassName("empty")).forEach(function(element){
     element.onclick = function(){
-      fullScreenNotification("与HEXA框架的连接被拒绝：\nERR_INVALID_USERNAME at AUTH: Vega.W\n请检查AURA信号或令牌。")
+      fullScreenNotification("发生了连接错误。","与HEXA框架的连接被拒绝：\nERR_INVALID_USERNAME at AUTH: Vega_WireWeaver at MASTERTOKEN\n请检查AURA信号或登陆凭证。")
     }
   });
   let view = document.getElementById("firework");

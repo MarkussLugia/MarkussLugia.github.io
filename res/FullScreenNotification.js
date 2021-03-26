@@ -1,4 +1,4 @@
-function fullScreenNotification(textContent,expiration) {
+function fullScreenNotification(titleContent,textContent,expiration) {
   if (document.getElementById("fullScreenNotificationBackground" != null)) {
     return;
   }
@@ -14,9 +14,13 @@ function fullScreenNotification(textContent,expiration) {
   textBox.id = "fullScreenNotificationTextBox";
   textBox.className = "fullScreenNotificationCenterBox";
   flexBox.appendChild(textBox);
+  let title = document.createElement("H1");
+  title.id = "fullScreenNotificationTitle";
+  title.innerHTML = titleContent.toString().replaceAll("<br>", "\n").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
+  textBox.appendChild(title);
   let text = document.createElement("P");
-  textContent = textContent.toString().replace("<br>", "\n").replace("<", "&lt;").replace("\n", "<br>");
-  text.innerHTML = textContent.replace("\n", "<br>");
+  text.id = "fullScreenNotificationText";
+  text.innerHTML = textContent.toString().replaceAll("<br>", "\n").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
   textBox.appendChild(text);
   let notify = document.createElement("B");
   notify.id = "fullScreenNotificationNotify";
