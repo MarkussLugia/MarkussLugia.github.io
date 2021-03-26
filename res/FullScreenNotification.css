@@ -13,7 +13,7 @@
     user-select: none;
 }
 
-#fullScreenNotificationNotify{
+#fullScreenNotificationBackground B{
     position: absolute;
     bottom: 0px;
     right: 3vh;
@@ -79,7 +79,7 @@
     #fullScreenNotificationTextBox{
         border-width: 0.45vw;
     }
-    #fullScreenNotificationNotify{
+    #fullScreenNotificationBackground B{
         right: calc(1vw + 2vh);
         bottom: calc(1vw + 2vh);
         font-size: calc(1vw + 2vh);
