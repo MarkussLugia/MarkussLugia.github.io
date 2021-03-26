@@ -39,25 +39,31 @@
     width: 75vw;
     height: auto;
     max-height: 80vh;
+    flex-wrap: nowrap;
     color: white;
     flex-direction: column;
+    justify-content: left;
     align-items: flex-start;
     border-style: solid none;
     border-color: white;
     border-width: 0.45vh;
+    padding: 0 5vw;
+    transition: height 1s;
+    overflow: hidden;
 }
 
 #fullScreenNotificationTextBox H1{
     line-height: 8vh;
     font-size: 5vh;
-    margin-top: 0;
-    margin-bottom: 1vh;
+    margin: 0;
 }
 
 #fullScreenNotificationTextBox P{
     line-height: 3vh;
     font-size: 2vh;
     margin: 0;
+    opacity: 0;
+    margin: 0.5vh 0;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {

@@ -1,5 +1,5 @@
 function fullScreenNotification(titleContent,textContent,expiration) {
-  if (document.getElementById("fullScreenNotificationBackground" != null)) {
+  if (document.getElementById("fullScreenNotificationBackground") != null) {
     return;
   }
   let background = document.createElement("DIV");
@@ -11,21 +11,25 @@ function fullScreenNotification(titleContent,textContent,expiration) {
   flexBox.className = "fullScreenNotificationCenterBox";
   background.appendChild(flexBox);
   let textBox = document.createElement("DIV");
+  flexBox.appendChild(textBox);
   textBox.id = "fullScreenNotificationTextBox";
   textBox.className = "fullScreenNotificationCenterBox";
-  flexBox.appendChild(textBox);
+  textBox.style.visibility = "hidden";
   let title = document.createElement("H1");
   title.id = "fullScreenNotificationTitle";
   title.innerHTML = titleContent.toString().replaceAll("<br>", "\n").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
   textBox.appendChild(title);
+  let titleHeight = textBox.getBoundingClientRect().height;
   let text = document.createElement("P");
   text.id = "fullScreenNotificationText";
   text.innerHTML = textContent.toString().replaceAll("<br>", "\n").replaceAll("<", "&lt;").replaceAll("\n", "<br>");
   textBox.appendChild(text);
+  let fullHeight = textBox.getBoundingClientRect().height;
   let notify = document.createElement("B");
   notify.id = "fullScreenNotificationNotify";
   notify.innerHTML = "单击以关闭";
   background.appendChild(notify);
+  textBox.style.visibility = "visible";
   background.animate([
     {
       opacity: "0",
@@ -43,17 +47,47 @@ function fullScreenNotification(titleContent,textContent,expiration) {
   textBox.animate([
     {
       opacity: "0",
-      padding: "0 5vw"
+      height: "0",
+      paddingTop: "0",
+      paddingBottom: "0"
     },
     {
       opacity: "1",
-      padding: "3vh 5vw"
+      height: titleHeight + "px",
+      paddingTop: "3vh",
+      paddingBottom: "3vh"
     }
   ],{
       duration: 500,
       easing: "ease-out",
       fill: "forwards",
       delay: 250
+  });
+  textBox.animate([
+    {
+      height: titleHeight + "px"
+    },
+    {
+      height: fullHeight + "px"
+    }
+  ],{
+      duration: 600,
+      easing: "ease-out",
+      fill: "forwards",
+      delay: 1000
+  });
+  text.animate([
+    {
+      opacity: "0"
+    },
+    {
+      opacity: "1"
+    }
+  ],{
+      duration: 300,
+      easing: "linear",
+      fill: "forwards",
+      delay: 1000
   });
   notify.animate([
     {
@@ -63,10 +97,10 @@ function fullScreenNotification(titleContent,textContent,expiration) {
       opacity: "1"
     }
   ],{
-      duration: 500,
+      duration: 1000,
       easing: "ease-out",
       fill: "forwards",
-      delay: 1500
+      delay: 3000
   });
   notify.animate([
     {
@@ -79,11 +113,11 @@ function fullScreenNotification(titleContent,textContent,expiration) {
       opacity: "1"
     }
   ],{
-      duration: 1200,
+      duration: 1800,
       easing: "ease-in-out",
       iterations: Infinity,
       fill: "forwards",
-      delay: 2000
+      delay: 4000
   });
   return background;
 }
