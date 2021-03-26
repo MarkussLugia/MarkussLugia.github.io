@@ -47,7 +47,7 @@ function fullScreenNotification(titleContent,textContent,expiration) {
     },
     {
       opacity: "1",
-      padding: "30px 0px"
+      padding: "4vh 0px"
     }
   ],{
       duration: 500,
