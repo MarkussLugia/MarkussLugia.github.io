@@ -106,13 +106,3 @@ function fullScreenNotificationClose() {
   });
   setTimeout(function(){document.body.removeChild(document.getElementById("fullScreenNotificationBackground"));},300);
 }
-// function clean(view, className){
-//   for (var node of view.childNodes) {
-//     if (node.className == className) {
-//       if (Date.now() >= parseInt(node.getAttribute("expire"))) {
-//         view.removeChild(node);
-//         return;
-//       }
-//     }
-//   }
-// }
