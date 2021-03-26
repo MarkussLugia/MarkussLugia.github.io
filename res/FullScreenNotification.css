@@ -48,12 +48,10 @@
     border-color: white;
     border-width: 0.45vh;
     padding: 0 5vw;
-    transition: height 1s;
     overflow: hidden;
 }
 
 #fullScreenNotificationTextBox H1{
-    line-height: 8vh;
     font-size: 5vh;
     margin: 0;
 }
@@ -68,7 +66,6 @@
 
 @media screen and (max-aspect-ratio: 1/1) {
     #fullScreenNotificationTextBox H1{
-        line-height: 8vw;
         font-size: 5vw;
         margin-bottom: 1vw;
     }
