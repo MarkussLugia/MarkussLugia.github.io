@@ -57,11 +57,10 @@
 }
 
 #fullScreenNotificationTextBox P{
-    line-height: 3vh;
     font-size: 2vh;
     margin: 0;
     opacity: 0;
-    margin: 1vh 0;
+    margin-top: 1vh;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
@@ -69,7 +68,6 @@
         font-size: 5vw;
     }
     #fullScreenNotificationTextBox P{
-        line-height: 3vw;
         font-size: calc(1.5vw + 0.5vh);
     }
     #fullScreenNotificationTextBox{

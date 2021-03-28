@@ -60,8 +60,8 @@ function fullScreenNotification(titleContent,textContent) {
     {
       opacity: "1",
       height: titleHeight + "px",
-      paddingTop: "3vh",
-      paddingBottom: "3vh"
+      paddingTop: window.innerHeight > window.innerWidth ? "3vw" : "3vh",
+      paddingBottom: window.innerHeight > window.innerWidth ? "3vw" : "3vh"
     }
   ],{
       duration: 500,
