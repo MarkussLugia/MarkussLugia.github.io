@@ -6,19 +6,15 @@ function backgroundWave(view, x, y, radius, duration) {
   let wave = document.createElement("DIV");
   wave.setAttribute("expire", Date.now() + duration);
   wave.className = "backgroundWave";
-  wave.style.position = "absolute";
   wave.style.left = x + "px";
   wave.style.top = y + "px";
-  wave.style.borderStyle = "solid";
-  wave.style.borderColor = "#888888";
-  wave.style.boxSizing = "border-box";
   wave.style.zIndex = -1;
   view.appendChild(wave);
   wave.animate([
     {
       width: "0px",
       height: "0px",
-      opacity: 0.3,
+      opacity: 0.2,
       borderRadius: "0px",
       borderWidth: "0px",
     },
@@ -27,7 +23,7 @@ function backgroundWave(view, x, y, radius, duration) {
       offset: 0.1
     },
     {
-      opacity: 0.3,
+      opacity: 0.15,
       offset: 0.7
     },
     {

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>秒表</title>
+    <style>
+      body{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      b {
+        font-size: 114px;
+        font-family: Jost;
+        font-weight: normal;
+        font-variant-numeric: tabular-nums lining-nums;
+        margin-right: 5px;
+        margin-left: 15px;
+      }
+      .div{
+        position: absolute;
+        top: 32vh;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        font-family: 阿里巴巴普惠体;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div" style="color: #333333"><p><b class="hour">00</b>时<b class="minute">00</b>分<b class="second">00</b>秒<b class="tick" style="color: #777777">00</b></p></div>
+    <script>
+      let timeRemaining = 0;
+      function twoDigit(int){
+        let str;
+        str = int.toString();
+        if(int < 10){
+          str = "0" + str;
+        }
+        return str;
+      }
+      function displayTime() {
+        timeRemaining = 1613599200000 - Date.now();
+        if (timeRemaining < 0) {
+          timeRemaining = 0;
+        }
+        let second = Math.floor(timeRemaining / 1000) % 60;
+        document.querySelector('.hour').textContent = twoDigit(Math.floor(timeRemaining / 3600000));
+        document.querySelector('.minute').textContent = twoDigit(Math.floor(timeRemaining / 60000) % 60);
+        document.querySelector('.second').textContent = twoDigit(second);
+        document.querySelector('.tick').textContent = twoDigit(Math.floor(timeRemaining / 16.6667) % 60);
+        window.requestAnimationFrame(displayTime);
+      }
+     displayTime();
+    </script>
+  </body>
+</html>
