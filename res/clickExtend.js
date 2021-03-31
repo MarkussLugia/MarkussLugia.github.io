@@ -22,7 +22,7 @@ function clickExtend(element) {
             ],
             {
                 duration: 500,
-                easing:"linear",
+                easing:"ease-in-out",
                 fill:"forwards"
             }
         );
