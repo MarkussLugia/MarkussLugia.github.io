@@ -1,14 +1,11 @@
-function clickExtend(element) {
-    let parent = element.parentNode;
+function clickExtend(element, parent, root) {
     if (parent.getAttribute("extended") != "True") {
         let rect = element.getBoundingClientRect();
+        let rootRect = root.getBoundingClientRect();
         let centerX = rect.x + rect.width / 2;
         let centerY = rect.y + rect.height / 2;
-        console.log(centerX + "," + centerY);
-        let offsetX = window.innerWidth / 2 - centerX;
-        let offsetY = window.innerHeight / 2 - centerY;
-        console.log(window.innerWidth / 2 + "," + window.innerHeight / 2);
-        console.log(offsetX + "," + offsetY);
+        let offsetX = rootRect.width / 2 - centerX + rootRect.x;
+        let offsetY = rootRect.height / 2 - centerY + rootRect.y;
         let parentRect = parent.getBoundingClientRect();
         parent.style.transformOrigin = (centerX - parentRect.x) + "px " + (centerY - parentRect.y) + "px";
         parent.animate(
@@ -17,12 +14,12 @@ function clickExtend(element) {
                     transform: "scale(1,1) translate(0px,0px)"
                 },
                 {
-                    transform: "scale(5,5) translate(" + offsetX/5 + "px," + offsetY/5 + "px)"
+                    transform: "scale(4.5,4.5) translate(" + offsetX/4.5 + "px," + offsetY/4.5 + "px)"
                 }
             ],
             {
-                duration: 500,
-                easing:"ease-in-out",
+                duration: 600,
+                easing:"ease-out",
                 fill:"forwards"
             }
         );
@@ -39,7 +36,7 @@ function clickExtend(element) {
                 }
             ],
             {
-                duration: 800,
+                duration: 400,
                 easing:"ease-out",
                 fill:"forwards"
             }

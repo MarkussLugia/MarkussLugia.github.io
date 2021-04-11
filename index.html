@@ -4,7 +4,6 @@
   <style media="screen">
     #firework{
       background-image: linear-gradient(to bottom, #000000, #000840);
-      grid-area: 1 / 3 / 3 / 4;
     }
     #myNintendo{
       background-image: url(res/myNintendo.png);
@@ -20,58 +19,83 @@
       background-size: contain;
       background-repeat: no-repeat;
     }
-    @media screen and (max-aspect-ratio: 1/1) {
-      #firework{
-        background-image: linear-gradient(to bottom, #000000, #000840);
-        grid-area: 1 / 3 / 2 / 5;
-      }
+    .grid{
+      clip-path: url(#clip);
+    }
+    .gridInner{
+      clip-path: url(#clip);
+      margin: 0.98% 1.1%;
+      width: 97.8%;
+      height: 96.25%;
+      background-color: #000840;
+      background-image: linear-gradient(320deg, #1CA3E2, #25A6A6, #23D290);
     }
   </style>
   <link rel="stylesheet" href="res/fireworks.css">
-  <link rel="stylesheet" href="res/backgroundAnimation.css">
   <link rel="stylesheet" href="res/grid.css">
-  <link rel="stylesheet" href="res/FullScreenNotification.css">
 </head>
 <body>
-  <div id="background">
-    <div class="wrapper">
-      <div id="firework" class="grid" onClick="window.open('res/fireworks.html','_self')"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-      <div class="grid empty"></div>
-        <div id="myNintendo" class="grid" openURL="https://my.nintendo.com/" onclick="clickExtend(this)">
-        <div id="myNintendoRedBg" class="gridAnimation" style="background-color:#E60012; opacity:0; width:100%; height:100%"></div>
-        <img id="myNintendoRollingPoint" class="gridAnimation" src="res/myNintendoPlatiumPointFlat.png" style="display: block; height:50%; bottom: 1vh; left: -20vh">
-        <img id="myNintendoFallingPointSlow" class="gridAnimation" src="res/myNintendoFallingPointSlow.png" style="display: block; max-height: 420%; min-width: 100%; max-width: 200%; top: -120vh">
-        <img id="myNintendoFallingPointFast" class="gridAnimation" src="res/myNintendoFallingPointFast.png" style="display: block; max-height: 540%; min-width: 100%; max-width: 210%; top: -120vh">
-        <img id="myNintendoMiiBack" class="gridAnimation" src="res/myNintendoMiiBack.png" style="display: block; max-height:70%;min-width: 100%; max-width: 150%; bottom: -20vh">
-        <img id="myNintendoMiiFront" class="gridAnimation" src="res/myNintendoMiiFront.png" style="display: block; max-height:70%; min-width: 100%; max-width: 150%; bottom: -20vh">
+  <svg style="position:absolute; z-index: -1; display:hidden">
+    <defs>
+      <clipPath id="clip" clipPathUnits="objectBoundingBox">
+         <path d="
+         m 0.5,0 
+         C 0.6,0 0.87,0 0.94,0.014
+         C 1,0.026 1,0.13 1,0.5 
+         C 1,0.87 1,0.974 0.94,0.986 
+         C 0.87,1 0.6,1 0.5,1 
+         C 0.4,1 0.13,1 0.06,0.986 
+         C 0,0.974 0,0.87 0,0.5 
+         C 0,0.13 0,0.026 0.06,0.014 
+         C 0.13,0 0.4,0 0.5,0 
+         Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <div id="viewbox">
+    <div id="background">
+      <div id="wrapper">
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid" openURL="res/fireworks.html"><div id="firework" class="gridInner"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+          <div class="grid" openURL="https://my.nintendo.com/" onclick="clickExtend(this)">
+            <div id="myNintendo" class="gridInner">
+              <div id="myNintendoRedBg" class="gridAnimation" style="background-color:#E60012; opacity:0; width:100%; height:100%"></div>
+              <img id="myNintendoRollingPoint" class="gridAnimation" src="res/myNintendoPlatiumPointFlat.png" style="display: block; height:50%; bottom: 1vh; left: -20vh">
+              <img id="myNintendoFallingPointSlow" class="gridAnimation" src="res/myNintendoFallingPointSlow.png" style="display: block; max-height: 420%; min-width: 100%; max-width: 200%; top: -120vh">
+              <img id="myNintendoFallingPointFast" class="gridAnimation" src="res/myNintendoFallingPointFast.png" style="display: block; max-height: 540%; min-width: 100%; max-width: 210%; top: -120vh">
+              <img id="myNintendoMiiBack" class="gridAnimation" src="res/myNintendoMiiBack.png" style="display: block; max-height:70%;min-width: 100%; max-width: 150%; bottom: -20vh">
+              <img id="myNintendoMiiFront" class="gridAnimation" src="res/myNintendoMiiFront.png" style="display: block; max-height:70%; min-width: 100%; max-width: 150%; bottom: -20vh">
+            </div>
+        </div>
+        <div class="grid"><div class="gridInner empty"></div></div>
+        <div class="grid" openURL="https://github.com/MarkussLugia/MarkussLugia.github.io"><div id="github" class="gridInner"></div></div>
       </div>
-      <div class="grid empty"></div>
-      <div id="github" class="grid" openURL="https://github.com/MarkussLugia/MarkussLugia.github.io"></div>
+      <p class="time" id="hour">02</p>
+      <p class="time" id="colon">:</p>
+      <p class="time" id="minute">49</p>
     </div>
   </div>
 </body>
 <script src="res/fireworks.js" type="text/javascript"></script>
-<script src="res/FullScreenNotification.js" type="text/javascript"></script>
 <script src="res/myNintendoAnimation.js" type="text/javascript"></script>
-<script src="res/backgroundAnimation.js" type="text/javascript"></script>
 <script src="res/clickExtend.js" type="text/javascript"></script>
+<script src="res/clockAnimation.js" type="text/javascript"></script>
 <script type="text/javascript">
   let view = document.getElementById("firework");
-  let wrapper = document.getElementsByClassName("wrapper")[0];
+  let viewbox = document.getElementById("viewbox");
+  let background = document.getElementById("background");
   function gridOnClickHandler(element) {
-    clickExtend(element);
+    clickExtend(element, background, viewbox);
     document.getElementById("background").style.backgroundColor = wrapper.getAttribute("extended") == "True" ? "black" : "white";
     if (element.getAttribute("openURL") != null) {
       window.open(element.getAttribute("openURL"),'_self')
-    }
-    else if(wrapper.getAttribute("extended") != "False"){
-      fullScreenNotification("发生了连接错误。","与HEXA主框架的连接被拒绝：\nERR_INVALID_USERNAME at AUTH: Vega_WireWeaver\n请检查AURA信号或您所使用的登陆凭证。\n凭证可能已删除或不再受信任。\n这句话只是用来占据宽度的。\n这句话也是。\n哼哼啊啊啊啊啊啊啊啊啊。\n114514\n1919810\n趴地上转三圈\n追尾了黑色高级车\n那么只有红茶可以吗？\n我们遇到了他[脏话删除]的故障！\n检查无误后请重试连接。")
     }
   }
   Array.from(document.getElementsByClassName("grid")).forEach(function(element){
@@ -85,16 +109,13 @@
     fireworksClassic(view, null, null, radius);
     setTimeout("autoFireworks()",Math.random() * 240 + 720);
   }
-  function autoBackgroundAnimation(){
-    backgroundWave(document.getElementById("background"));
-    setTimeout("autoBackgroundAnimation()",Math.random() * 500 +4500);
-  }
   function autoGridAnimation(){
     Array.from(document.getElementsByClassName("gridAnimation")).forEach(function(grid){Array.from(grid.getAnimations()).forEach(function(node){node.play();});});
     setTimeout("autoGridAnimation()",16000);
   }
   myNintendoAnimation();
   autoGridAnimation();
-  autoBackgroundAnimation();
   autoFireworks();
+  syncTime(document.getElementById("hour"),document.getElementById("minute"));
+  tickAnimation(document.getElementById("colon"))
 </script>
