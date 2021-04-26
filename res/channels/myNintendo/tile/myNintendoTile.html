@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myNintendoAnimation</title>
+    <style>
+        body{
+            position: absolute;
+            margin: 0;
+        }
+        #myNintendo{
+            position: absolute;
+            background-image: url(myNintendo.png);
+            background-color: #E60012;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #myNintendoRedBg{
+            position: absolute;
+            background-color:#E60012; 
+            opacity:0; 
+            width:100vw; 
+            height:100vh;
+        }
+        img{
+            display: block;
+            position: absolute;
+        }
+        #myNintendoRollingPoint{
+            height:50vh; 
+            bottom: 5vh; 
+            left: -50vh;
+        }
+        #myNintendoFallingPointSlow{
+            max-height: 420vh; 
+            min-width: 100vw; 
+            max-width: 200vw; 
+            bottom: 120vh;
+        }
+        #myNintendoFallingPointFast{
+            max-height: 540vh; 
+            min-width: 100vw; 
+            max-width: 210vw; 
+            bottom: 120vh;
+        }
+        #myNintendoMiiBack, #myNintendoMiiFront{
+            max-height: 70vh;
+            min-width: 100vw; 
+            max-width: 150vw; 
+            bottom: -70vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="myNintendo">
+        <div id="myNintendoRedBg" class="gridAnimation"></div>
+        <img id="myNintendoRollingPoint" class="gridAnimation" src="myNintendoPlatiumPointFlat.png">
+        <img id="myNintendoFallingPointSlow" class="gridAnimation" src="myNintendoFallingPointSlow.png">
+        <img id="myNintendoFallingPointFast" class="gridAnimation" src="myNintendoFallingPointFast.png">
+        <img id="myNintendoMiiBack" class="gridAnimation" src="myNintendoMiiBack.png">
+        <img id="myNintendoMiiFront" class="gridAnimation" src="myNintendoMiiFront.png">
+    </div>
+    <script>
+        function myNintendoAnimation() {
+            document.getElementById("myNintendoRedBg").animate([
+                {opacity:0.001},
+                {opacity:1,offset:0.08},
+                {opacity:1,offset:0.49},
+                {opacity:0,offset:0.50},
+                {opacity:0}
+            ],{
+                duration:9999,
+                delay:1,
+                fill: "forwards"
+            }).finish();
+            document.getElementById("myNintendoRollingPoint").animate([
+                {left: "0", transform: "rotate(0deg) translateX(-100%)", transformOrigin:"-50% 50%"},
+                {left: "100%", transform: "rotate(600deg) translateX(0)", transformOrigin:"50% 50%"}
+            ],{
+                duration:2000,
+                delay:900,
+                fill: "forwards"
+            }).finish();
+            document.getElementById("myNintendoFallingPointSlow").animate([
+                {top: "0", transform: "translateY(-100%)"},
+                {top: "100%", transform: "translateY(0)"}
+            ],{
+                duration:3600,
+                delay:3000,
+                fill: "forwards"
+            }).finish();
+            document.getElementById("myNintendoFallingPointFast").animate([
+                {top: "0", transform: "translateY(-100%)"},
+                {top: "100%", transform: "translateY(0)"}
+            ],{
+                duration:3200,
+                delay:3000,
+                fill: "forwards"
+            }).finish();
+            document.getElementById("myNintendoMiiFront").animate([
+                {bottom: "-70%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "0%"},
+                {bottom: "-70%"},
+                {bottom: "-70%"},
+            ],{
+                duration:3500,
+                delay:6900,
+                fill: "forwards"
+            }).finish();
+            document.getElementById("myNintendoMiiBack").animate([
+                {bottom: "-70%"},
+                {bottom: "-70%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "-10%"},
+                {bottom: "-4%"},
+                {bottom: "0%"},
+                {bottom: "-70%"},
+            ],{
+                duration:3500,
+                delay:6900,
+                fill: "forwards"
+            }).finish();
+        }
+        myNintendoAnimation();
+        setInterval(function(){document.getAnimations().forEach( node => node.play());}, 16000)
+        document.getAnimations().forEach( node => node.play());
+    </script>
+</body>
+</html>

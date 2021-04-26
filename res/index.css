@@ -1,0 +1,188 @@
+@font-face{
+  font-family: "timeFont";
+  src: url(CursedTimerULiL.ttf);
+}
+@font-face{
+  font-family: "sourceHan";
+  src: url(SourceHanSansCN-VF.otf);
+}
+body{
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  background-color: black;
+  background-image: url(slashLine.svg);
+  background-size: calc(3vw + 3vh);
+  background-repeat: repeat;
+}
+#viewbox{
+  position: fixed;
+  left: calc(50vw - (800vh / 9));
+  width: calc(1600vh / 9);
+  height: 100vh;
+  overflow: hidden;
+  box-shadow: 0 0 calc(10vw + 10vh) calc(2vw + 2vh) #505050;
+}
+#background{
+  width: 100%;
+  height: 100%;
+  background-color: #D0D0D8;
+}
+#panel{
+  position: absolute;
+  z-index: 8;
+  width: 100%;
+  height: 100%;
+  clip-path: url(#panelClip);
+  background-image: url(horizontalLine.svg), linear-gradient(to right, #E4E4E4 0%, #EFEFEF 50%, #E4E4E4 100%);
+  background-size: 2.4%, cover;
+  background-repeat: repeat, no-repeat;
+}
+#panelBlue{
+  position: absolute;
+  z-index: 7;
+  width: 100%;
+  height: 100%;
+  top:0.6%;
+  clip-path: url(#panelClip);
+  background-color: #53B8E4;
+}
+#panelShadow{
+  position: absolute;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  filter: blur(8vh);
+  opacity: 0.3;
+}
+#panelShadow div{
+  width: 100%;
+  height: 100%;
+  clip-path: url(#panelClip);
+  background-color: #000000;
+}
+#backgroundTest{
+  opacity: 0.5;
+  z-index: 255;
+  display: none;
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-image: url(wiimenu.png);
+  background-size: cover;
+}
+#wrapper{
+  width: 84%;
+  left: 8%;
+  height: 62%;
+  top:7%;
+  position: absolute;
+  z-index: 63;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 0;
+}
+.grid{
+  position: relative;
+  margin: 1.5% 2%;
+  padding: 1.1% 1%;
+  overflow: hidden;
+  background-color: #B0B0B0;
+}
+.grid, .gridInner{
+  clip-path: url(#channelClip);
+}
+.gridInner{
+  width: 100%;
+  height: 100%;
+}
+.iframeOverlay{
+  width: 100%; 
+  height: 100%; 
+  background-color: transparent; 
+  position: absolute; 
+  left: 0; 
+  top: 0;
+}
+.gridAnimation{
+  position: absolute;
+}
+.empty{
+  background-image: url(wii.svg), linear-gradient(to bottom, rgba(240,240,240,0.7) 0%, rgba(210,210,210,0.64) 15%, rgba(210,210,210,0.64) 70%, rgba(240,240,240,0.7) 100%), url(SiltraAndHorobPaintGif.gif);
+  background-size:26%, cover, cover;
+  background-repeat: no-repeat;
+  background-position: 49% 52%;
+  filter: grayscale(1);
+  overflow: hidden;
+}
+.empty div{
+  width: 100%;
+  height:110%;
+  position: absolute;
+  opacity: 0.56;
+  background-color: rgba(235, 235, 235, 0.75);
+  background-image: url(horizontalLine.svg);
+  background-size: 15%;
+}
+.empty hr{
+  width: 160%;
+  position: absolute;
+  left: -30%;
+  opacity: 0;
+  background-color: white;
+  height: 3.5%;
+  filter: blur(1.28vh);
+  border: none;
+  margin: 0;
+}
+.time{
+  font-family: "timeFont", monospace;
+  font-size: 9vh;
+  color: #989898;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+}
+#hour{
+  top: 71.8%;
+  right: 50.9%;
+}
+#colon{
+  top: 72%;
+  right: 49.2%;
+}
+#minute{
+  top: 71.8%;
+  right: 42.65%;
+}
+#date{
+  font-family: sourceHan;
+  font-weight: 800;
+  position: absolute;
+  font-size: 6.4vh;
+  color: #787878;
+  top:77%;
+  left: 40%;
+  transform: scaleX(0.92);
+}
+
+@media screen and (max-aspect-ratio: 16/9) {
+  #viewbox{
+    left: 0;
+    top: calc(50vh - 28.125vw);
+    width: 100vw;
+    height: 56.25vw;
+  }
+  #date{
+    font-size: 3.6vw;
+  }
+  .time{
+    font-size: 5.0625vw;
+  }
+  .emptyBlur{
+    filter: blur(0.72vw)
+  }
+}

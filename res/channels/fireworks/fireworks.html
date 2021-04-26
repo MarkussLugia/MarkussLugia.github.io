@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>ZELDA 35 HOORAY</title>
+  <style media="screen">
+  body{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+  .overlay{
+    width:24vw;
+    height:24vw;
+    border-radius: 12vw;
+    position: absolute;
+    background-color: rgb(255,255,255);
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 8vw;
+    filter: blur(27vw);
+  }
+  #logo{
+    width:60vw;
+    height:30vw;
+    position: absolute;
+    opacity: 0;
+    top: calc(50vh - 15vw);
+    left:20vw;
+    background-color: rgba(255,255,255,0.2);
+    mask: url(#majora) alpha;
+    overflow: hidden;
+    transition: 1s;
+  }
+  #view {
+     background-image: linear-gradient(to bottom, #000000, #000840);
+     background-color: black;
+     height:100%;
+     width:100%;
+     overflow: hidden;
+     position:absolute;
+  }
+  </style>
+  <link rel="stylesheet" href="fireworks.css">
+</head>
+
+<body>
+  <div id="view"></div>
+  <div id="logo"></div>
+</body>
+<svg><mask id="majora"  maskContentUnits="userSpaceOnUse">
+  <image width="60vw" height="30vw" href="Zelda_35th_Logo.svg"></image>
+</mask></svg>
+<script src="fireworks.js" type="text/javascript"></script>
+<script type="text/javascript">
+  let view = document.getElementById("view");
+  let logo = document.getElementById("logo");
+
+  function autoFireworksFirefox(){
+    let radius = (Math.random() + 0.2) * (window.innerWidth + window.innerHeight) * 0.1;
+    let bokeh = ((200 - radius) / 30) ^ 2;
+    let firework = fireworksClassic(view, null, null, radius);
+    firework.mainframe.style.filter = "blur(" + bokeh + "px)";
+    let opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
+    firework.mainframe.style.opacity = opacity;
+    overlay = document.createElement("DIV");
+    overlay.className = "overlay";
+    overlay.style.borderColor = "rgb(" + (firework.rgb[0] + 30) + "," + (firework.rgb[1] + 30) + "," + (firework.rgb[2] + 30) + ")";
+    overlay.style.left = (parseInt(firework.mainframe.style.left.slice(0,-2)) + radius)*0.8 - window.innerWidth * 0.22 + "px";
+    overlay.style.top = ((parseInt(firework.mainframe.style.top.slice(0,-2)) + radius)/window.innerHeight - 0.44)*window.innerWidth*0.5 + "px";
+    overlay.setAttribute("expire", Date.now() + 800);
+    logo.appendChild(overlay);
+    overlay.animate([
+      {opacity: 0},
+      {opacity: opacity, offset: 0.05},
+      {opacity: 0}
+    ],{
+      duration: 800,
+      easing: "ease-in",
+      fill: "forwards"
+    });
+    setTimeout(function() {cleanOverlay(logo)}, 800);
+    setTimeout("autoFireworksFirefox()", Math.random() * 100 + 300);
+  }
+
+  function autoFireworks(){
+    let radius = (Math.random() + 0.2) * (window.innerWidth + window.innerHeight) * 0.1;
+    let bokeh = ((200 - radius) / 30) ^ 2;
+    let firework = fireworksClassic(view, null, null, radius);
+    firework.mainframe.style.filter = "blur(" + bokeh + "px)";
+    let opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
+    firework.mainframe.style.opacity = opacity;
+    setTimeout("autoFireworks()", Math.random() * 100 + 300);
+  }
+
+  function cleanOverlay(root){
+    for (var node of root.childNodes) {
+      if (node.className == "overlay") {
+        if (Date.now() >= parseInt(node.getAttribute("expire"))) {
+          root.removeChild(node);
+          return;
+        }
+      }
+    }
+  }
+  if (typeof InstallTrigger !== "undefined") {
+    logo.style.opacity = "1";
+    let overlay;
+    autoFireworksFirefox();
+  }
+  else{
+    document.body.removeChild(logo);
+    autoFireworks();
+  } 
+</script>

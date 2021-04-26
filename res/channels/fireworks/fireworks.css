@@ -1,0 +1,14 @@
+.fireworksClassicFrame{
+   position: absolute;
+ }
+ .fireworksClassicDot{
+   position: absolute;
+   box-sizing: border-box;
+   border-bottom-color: rgba(255,255,255,0.8);
+   border-bottom-style: solid;
+ }
+ .fireworksClassicHalo{
+   position: absolute;
+   box-sizing: border-box;
+   border-style: solid;
+ }
