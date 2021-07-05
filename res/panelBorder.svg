@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1600 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="#53B8E4" stroke-width="4.8" stroke-linecap="round" d="
+         M 1920 8 
+         L 1368 8 
+         C 1304,8 1256,26 1200,53  
+         C 1144,80 1088,102.5 1024,102.5 
+         L 576 102.5 
+         C 512,102.5 456,80 400,53 
+         C 344,26 296,8 232,8 
+         L -320 8 "/>
+</svg>
