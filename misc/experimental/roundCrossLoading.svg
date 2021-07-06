@@ -1,0 +1,74 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style>
+        @keyframes roundFill {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+        @keyframes opacityTransform {
+            0% {
+                opacity: 0.5;
+            }
+            30% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes roundExtend {
+            from {
+                transform: scale(0.75);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+        @keyframes spikeScale {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0);
+            }
+        }
+        circle {
+            transform-origin: center
+        }
+
+        #centerRound {
+            animation: roundFill 1.5s infinite;
+        }
+        #borderRound {
+            animation: roundExtend 1.5s infinite;
+        }
+        #centerMask g path{
+            animation: spikeScale 1.5s infinite;
+        }
+        #fill{
+            animation: opacityTransform 1.5s infinite;
+        }
+    </style>
+    <defs>
+        <clipPath id="borderClip">
+        </clipPath>
+        <mask id="centerMask">
+            <rect id="fill" style="fill:#FFF" width="100" height="100" />
+            <circle id="centerRound" cx="50" cy="50" r="50" />
+            <g><animateTransform attributeName="transform" begin="0s" dur="1.5s" type="rotate" from="0 50 50" to="0 50 50"  calcMode="spline" keyTimes="0;1" keySplines="0.2 0 0.5 1" 	 repeatCount="indefinite"/>
+            <path style="transform-origin: 50% 0" d="M 0 0 L 50 50 L 100 0 z" />
+            <path style="transform-origin: 100% 50%" d="M 100 0 L 50 50 L 100 100 z" />
+            <path style="transform-origin: 50% 100%" d="M 100 100 L 50 50 L 0 100 z" />
+            <path style="transform-origin: 0 50%" d="M 0 100 L 50 50 L 0 0 z" />
+            </g>
+        </mask>
+        <circle id="borderRound" fill="#2060D0" cx="50" cy="50" r="50" />
+    </defs>
+    <use href="#borderRound" mask="url(#centerMask)" />
+</svg>
