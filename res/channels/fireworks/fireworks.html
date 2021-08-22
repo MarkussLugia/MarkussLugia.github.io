@@ -21,7 +21,7 @@
       box-sizing: border-box;
       border-style: solid;
       border-width: 8vw;
-      filter: blur(27vw);
+      filter: blur(32vw);
     }
 
     #logo {
@@ -31,7 +31,7 @@
       opacity: 0;
       top: calc(50vh - 15vw);
       left: 20vw;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
       mask: url(#majora) alpha;
       overflow: hidden;
       transition: 1s;
@@ -64,30 +64,35 @@
   let logo = document.getElementById("logo");
 
   function autoFireworksFirefox() {
-    let radius = (Math.random() + 0.2) * (window.innerWidth + window.innerHeight) * 0.1;
-    let bokeh = ((200 - radius) / 30) ^ 2;
+    let sizeArg = Math.random() + 0.2;
+    let screenArg = window.innerWidth + window.innerHeight;
+    let radius = sizeArg * screenArg * 0.1;
+    let opacity = sizeArg + 0.2;
     fireworksClassic(view, null, null, radius).then(a => {
-      a.mainframe.style.filter = "blur(" + bokeh + "px)";
-      let opacity = 1.2 - ((radius >= 200) ? 0.2 : 60 / (200 - radius));
+      a.mainframe.style.filter = "blur(" + ((sizeArg - 1) ** 2) * screenArg * 0.01 + "px)";
       a.mainframe.style.opacity = opacity;
-      overlay = document.createElement("DIV");
-      overlay.className = "overlay";
-      overlay.style.borderColor = "rgb(" + (a.rgb[0] + 30) + "," + (a.rgb[1] + 30) + "," + (a.rgb[2] + 30) + ")";
-      overlay.style.left = (parseInt(a.mainframe.style.left.slice(0, -2)) + radius) * 0.8 - window.innerWidth * 0.22 + "px";
-      overlay.style.top = ((parseInt(a.mainframe.style.top.slice(0, -2)) + radius) / window.innerHeight - 0.44) * window.innerWidth * 0.5 + "px";
-      logo.appendChild(overlay);
-      overlay.animate([
-        { opacity: 0 },
-        { opacity: opacity, offset: 0.05 },
-        { opacity: 0 }
-      ], {
-        duration: 800,
-        easing: "ease-in",
-        fill: "forwards"
-      });
-      cleanPromise(logo, overlay, 800);
+      let overlayOpacity = (sizeArg - 0.4) * 1.25;
+      if (overlayOpacity > 0) {
+        overlay = document.createElement("DIV");
+        overlay.className = "overlay";
+        overlay.style.opacity = overlayOpacity;
+        overlay.style.borderColor = "rgb(" + (a.rgb[0] + 30) + "," + (a.rgb[1] + 30) + "," + (a.rgb[2] + 30) + ")";
+        overlay.style.left = (parseInt(a.mainframe.style.left.slice(0, -2)) + radius) * 0.8 - window.innerWidth * 0.22 + "px";
+        overlay.style.top = ((parseInt(a.mainframe.style.top.slice(0, -2)) + radius) / window.innerHeight - 0.44) * window.innerWidth * 0.5 + "px";
+        logo.appendChild(overlay);
+        overlay.animate([
+          { opacity: 0 },
+          { opacity: overlayOpacity, offset: 0.3 },
+          { opacity: 0 }
+        ], {
+          duration: 1200,
+          easing: "cubic-bezier(0, 0.54, 0.3, 1)",
+          fill: "forwards"
+        });
+        cleanPromise(logo, overlay, 1200);
+      }
     }).catch(a => console.log(a));
-    setTimeout("autoFireworksFirefox()", Math.random() * 200 + 150);
+    setTimeout("autoFireworksFirefox()", Math.random() * 0 + 580);
   }
 
   function autoFireworks() {
