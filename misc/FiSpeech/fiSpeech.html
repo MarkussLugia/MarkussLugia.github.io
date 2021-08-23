@@ -15,7 +15,7 @@
         }
 
         #background {
-            background-color: rgb(180, 10, 170);
+            background-color: rgb(180, 40, 240);
 
             position: absolute;
             left: 100px;
@@ -29,18 +29,33 @@
 
         #textFrame {
             position: absolute;
-            left: 180px;
+            left: 240px;
             top: 24px;
+
         }
 
-        #textFrame div {
+        .charFrame {
             margin: 4px;
-            font-family: "ChangChengTeCuSongTi", serif;
-            font-weight: 100;
+            font-family: "ChangChengTeCuSongTi";
             font-size: 50px;
-            /* background-image: linear-gradient(#F0F0F0,#B0B0B0);
-            background-clip: text; */
-            text-shadow: -1px 2px 2px black;
+            opacity: 0;
+            width: 50px;
+            height: 60px;
+        }
+
+        .textFace {
+            position: absolute;
+            background-image: linear-gradient(#F0F0F0, #A0A0A0);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .textBack {
+            position: absolute;
+            z-index: -1;
+            color: black;
+            filter: blur(2px);
+            transform: translate(-1px, 1.5px);
         }
     </style>
 </head>
@@ -48,7 +63,7 @@
 <body>
     <div>
         <p><span>输入文本来展现效果</span> <button onclick="buttonClick()">呼叫法伊</button> </p>
-        <textarea id="content" cols="36" rows="5"></textarea>
+        <textarea id="content" cols="36" rows="5">是，大师。您在呼唤法伊吗？</textarea>
         <br>
         <div id="box">
             <div id="background"></div>
@@ -58,51 +73,110 @@
     <script>
         function buttonClick() {
             document.getElementById("textFrame").innerHTML = "";
-            textProcessMain(document.getElementById("content").value, 30)
+            textAddMain(document.getElementById("content").value)
+                .then(nodes => setAllAnimations(nodes, 30))
         }
-        async function textProcessMain(text, interval) {
-            textElement = addTextDOM(text[0]);
-            await setAnimation(textElement);
-            text = text.slice(1);
-            if (text.length < 1) return;
-            setTimeout(() => textProcessMain(text, interval), interval);
+        async function textAddMain(text) {
+            let nodes = [];
+            for (let index = 0; index < text.length; index++) {
+                textElements = addTextDOM(text[index]);
+                nodes.push(textElements);
+            }
+            return nodes;
         }
         function addTextDOM(charArg) {
-            let t = document.createElement("div");
-            t.innerHTML = charArg;
-            document.getElementById("textFrame").appendChild(t);
-            return t;
+            let d = document.createElement("div");
+            d.classList.add("charFrame")
+            let t1 = document.createElement("div");
+            t1.classList.add("textFace")
+            t1.innerHTML = charArg;
+            let t2 = document.createElement("div");
+            t2.classList.add("textBack")
+            t2.innerHTML = charArg;
+            d.appendChild(t1);
+            d.appendChild(t2);
+            document.getElementById("textFrame").appendChild(d);
+            return [d, t1, t2];
         }
-        function setAnimation(textElement) {
-            textElement.animate(
+        async function setAllAnimations(nodes, interval) {
+            setAnimations(nodes[0]);
+            nodes.splice(0, 1);
+            if (nodes.length < 1) return;
+            setTimeout(() => {
+                setAllAnimations(nodes, interval)
+            }, interval);
+        }
+        function setAnimations(textElements) {
+            textElements[0].animate(
                 [
                     {
-                        transform: "translateX(8px) scale(0.65)",
+                        transform: "translateX(6px) scale(0.54)",
                         opacity: 0,
-                        color: "rgb(250,250,250)"
                     },
                     {
                         transform: "translateX(0px) scale(0.65)",
                         opacity: 1,
-                        color: "rgb(120,120,120)",
-                        offset: 0.649
-                    },
-                    {
-                        transform: "translateX(0px) scale(0.65)",
-                        opacity: 1,
-                        color: "rgb(210,210,210)",
                         offset: 0.65
                     },
                     {
                         transform: "translateX(0px) scale(0.65)",
                         opacity: 1,
-                        color: "rgb(210,210,210)",
                         offset: 0.999
                     },
                     {
                         transform: "translateX(0px) scale(1)",
                         opacity: 1,
-                        color: "rgba(230,230,230,255)",
+                    }
+                ],
+                {
+                    fill: "forwards",
+                    easing: "ease-out",
+                    duration: 320,
+                }
+            );
+            textElements[1].animate(
+                [
+                    {
+                        opacity: 0,
+                        color: "rgb(255,255,255)"
+                    },
+                    {
+                        opacity: 1,
+                        color: "rgb(125,125,125)",
+                        offset: 0.649
+                    },
+                    {
+                        opacity: 1,
+                        color: "rgb(210,210,210)",
+                        offset: 0.65
+                    },
+                    {
+                        opacity: 1,
+                        color: "rgb(210,210,210)",
+                        offset: 0.999
+                    },
+                    {
+                        opacity: 1,
+                        color: "rgba(255,255,255,0)",
+                    }
+                ],
+                {
+                    fill: "forwards",
+                    easing: "ease-out",
+                    duration: 320,
+                }
+            );
+            textElements[2].animate(
+                [
+                    {
+                        opacity: 0
+                    },
+                    {
+                        opacity: 0.4,
+                        offset: 0.999
+                    },
+                    {
+                        opacity: 1,
                     }
                 ],
                 {
