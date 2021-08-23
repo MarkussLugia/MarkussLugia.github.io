@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "ChangChengTeCuSongTi";
+            src: url("长城特粗宋体.ttf");
+        }
+
+        #box {
+            position: absolute;
+            top: 300px;
+        }
+
+        #background {
+            background-color: rgb(180, 10, 170);
+
+            position: absolute;
+            left: 100px;
+            top: 0px;
+            z-index: -1;
+            width: 1000px;
+            height: 120px;
+            border-radius: 120px;
+            filter: blur(40px);
+        }
+
+        #textFrame {
+            position: absolute;
+            left: 180px;
+            top: 24px;
+        }
+
+        #textFrame div {
+            margin: 4px;
+            font-family: "ChangChengTeCuSongTi", serif;
+            font-weight: 100;
+            font-size: 50px;
+            background-image: linear-gradient(#F0F0F0,#B0B0B0);
+            background-clip: text;
+            text-shadow: -1px 2px 2px black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p><span>输入文本来展现效果</span> <button onclick="buttonClick()">呼叫法伊</button> </p>
+        <textarea id="content" cols="36" rows="5"></textarea>
+        <br>
+        <div id="box">
+            <div id="background"></div>
+            <div id="textFrame" style="display: flex; align-content: center;"></div>
+        </div>
+    </div>
+    <script>
+        function buttonClick() {
+            document.getElementById("textFrame").innerHTML = "";
+            textProcessMain(document.getElementById("content").value, 30)
+        }
+        async function textProcessMain(text, interval) {
+            textElement = addTextDOM(text[0]);
+            await setAnimation(textElement);
+            text = text.slice(1);
+            if (text.length < 1) return;
+            setTimeout(() => textProcessMain(text, interval), interval);
+        }
+        function addTextDOM(charArg) {
+            let t = document.createElement("div");
+            t.innerHTML = charArg;
+            document.getElementById("textFrame").appendChild(t);
+            return t;
+        }
+        function setAnimation(textElement) {
+            textElement.animate(
+                [
+                    {
+                        transform: "translateX(8px) scale(0.65)",
+                        opacity: 0,
+                        color: "rgb(250,250,250)"
+                    },
+                    {
+                        transform: "translateX(0px) scale(0.65)",
+                        opacity: 1,
+                        color: "rgb(120,120,120)",
+                        offset: 0.649
+                    },
+                    {
+                        transform: "translateX(0px) scale(0.65)",
+                        opacity: 1,
+                        color: "rgb(210,210,210)",
+                        offset: 0.65
+                    },
+                    {
+                        transform: "translateX(0px) scale(0.65)",
+                        opacity: 1,
+                        color: "rgb(210,210,210)",
+                        offset: 0.999
+                    },
+                    {
+                        transform: "translateX(0px) scale(1)",
+                        opacity: 1,
+                        color: "rgba(230,230,230,255)",
+                    }
+                ],
+                {
+                    fill: "forwards",
+                    easing: "ease-out",
+                    duration: 320,
+                }
+            );
+        }
+    </script>
+</body>
+
+</html>
